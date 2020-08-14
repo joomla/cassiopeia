@@ -40,12 +40,21 @@ $wa->usePreset('template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'l
 // Override 'template.active' asset to set correct ltr/rtl dependency
 $wa->registerStyle('template.active', '', [], [], ['template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr')]);
 
-// Preload the stylesheet for the font, actually we need to preload the font
 // Use of Google Font
 if ($this->params->get('googleFont'))
 {
-	$googleFontName = 'font.'. $this->params->get('googleFontName');
-	$wa->useStyle($googleFontName);	$this->getPreloadManager()->preload($wa->getAsset('style',$googleFontName)->getUri(), ['as' => 'style']);
+	switch( $this->params->get('googleFontName'))
+	{
+	  case "josefin-sans":
+		$wa->useStyle('font.josefin');
+		$this->getPreloadManager()->preload($wa->getAsset('style','font.josefin')->getUri(), ['as' => 'style']);
+		break;
+
+	  case "montserrat":
+		$wa->useStyle('font.montserrat');
+		$this->getPreloadManager()->preload($wa->getAsset('style','font.montserrat')->getUri(), ['as' => 'style']);
+		break;
+	}
 }
 
 // Logo file or site title param
