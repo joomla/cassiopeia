@@ -62,6 +62,7 @@ module.exports.compile = (options, path) => {
 
         folders = [
           `${RootPath}/build/media_source`,
+          `${RootPath}/templates/cassiopeia/scss/fonts`,
         ];
       }
 

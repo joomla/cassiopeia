@@ -92,14 +92,14 @@
       "uri": "system/searchtools/searchtools.min.css"
     },
     {
-      "name": "font.josefin",
+      "name": "font.josefin-sans",
       "type": "style",
-      "uri": "font--josefin.css"
+      "uri": "fonts/josefin-sans.min.css"
     },
     {
       "name": "font.montserrat",
       "type": "style",
-      "uri": "font--montserrat.css"
+      "uri": "fonts/montserrat.min.css"
     }
   ]
 }
