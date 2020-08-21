@@ -50,7 +50,7 @@ if ($this->params->get('googleFont'))
 	{
 		$assetFontName  = 'font.' . $paramsFontName;
 
-		$wa->registerAndUseStyle($assetFontName, 'media/fonts/' . $paramsFontName . '.min.css');
+		$wa->registerAndUseStyle($assetFontName, 'media/fonts/' . $paramsFontName . '.css');
 		$this->getPreloadManager()->preload($wa->getAsset('style', $assetFontName)->getUri(), ['as' => 'style']);
 	}
 }
