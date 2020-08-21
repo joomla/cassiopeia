@@ -110,6 +110,7 @@
 					type="filelist"
 					label="TPL_CASSIOPEIA_FONT_NAME_LABEL"
 					description="TPL_CASSIOPEIA_FONT_NAME_DESC"
+					showon="googleFont:1"
 					stripext="1"
 					directory="media/fonts/"
 					hide_none="1"
