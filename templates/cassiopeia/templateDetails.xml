@@ -117,8 +117,7 @@
 					fileFilter="\.css$"
 					exclude="\.min\.css$"
 					showon="googleFont:1"
-					>
-				</field>
+				/>
 			</fieldset>
 		</fields>
 	</config>
