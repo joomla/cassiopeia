@@ -7,7 +7,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      
+
       &:not(:last-child) {
         margin-right: 20px;
       }
@@ -68,27 +68,16 @@
     }
 
     .has-arrow {
-      position: relative;
+      @include caret(right);
 
-      &::after {
-        position: absolute;
-        content: "";
-        width: 0.5em;
-        height: 0.5em;
-        border-width: 0 1px 1px 0;
-        border-style: solid;
-        border-color: initial;
-        right: 1em;
-        transform: rotate(-45deg) translate(0, -50%);
-        transform-origin: top;
-        top: 50%;
-        transition: all 0.3s ease-out;
+      &:after {
+        vertical-align: baseline;
       }
     }
 
-    .mm-active > .has-arrow::after,
-    .has-arrow[aria-expanded="true"]::after {
-      transform: rotate(45deg) translate(0, -50%);
+    .mm-active > .has-arrow,
+    .has-arrow[aria-expanded="true"] {
+      @include caret(down);
     }
 
     @media (min-width: 992px) {
@@ -96,14 +85,6 @@
 
       > li {
         flex-direction: column;
-
-        > a.has-arrow {
-          padding-right: 1em;
-
-          &:after {
-            right: 0;
-          }
-        }
 
         > ul,
         > .mm-collapsing {
