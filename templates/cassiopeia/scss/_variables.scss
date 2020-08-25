@@ -73,7 +73,7 @@ $theme-colors: (
 );
 
 // Toolbar
-$cassiopeia-toolbar-line-height:         1.8rem;
+$cassiopeia-toolbar-line-height:     1.8rem;
 
 // Fonts
 $cassiopeia-inverted-text-color:     $cassiopeia-template-color;
@@ -88,95 +88,95 @@ $font-size-sm:                       .8rem;
 $fa-font-path:                       "../../../media/vendor/fontawesome-free/webfonts";
 
 // Border Radius
-$border-radius:               .25rem !default;
-$border-radius-lg:            .3rem !default;
-$border-radius-sm:            .2rem !default;
+$border-radius:                      .25rem !default;
+$border-radius-lg:                   .3rem !default;
+$border-radius-sm:                   .2rem !default;
 
 // Tables
-$table-bg:                           transparent !default;
-$table-bg-accent:                    rgba(0,0,0,.03) !default;
+$table-bg:                            transparent !default;
+$table-bg-accent:                     hsla(0, 0%, 0%, 0.03) !default;
 
 // Tabs
-$cassiopeia-tabs-header-bg:              $cassiopeia-block-header-bg;
-$cassiopeia-tabs-active-bg:              rgba(0,0,0,.03);
-$cassiopeia-tabs-active-highlight:       theme-color("primary");
+$cassiopeia-tabs-header-bg:           $cassiopeia-block-header-bg;
+$cassiopeia-tabs-active-bg:           hsla(0, 0%, 0%, 0.03);
+$cassiopeia-tabs-active-highlight:    theme-color("primary");
 
 // Cards
-$cassiopeia-card-title-bg:               $cassiopeia-block-header-bg;
-$cassiopeia-card-title-icon-bg:          $cassiopeia-block-header-bg;
-$cassiopeia-card-title-icon-bg-hover:    darken($cassiopeia-card-title-bg, 2%);
-$card-bg-color-light:                #f8f8f8;
-$card-bg-color-dark:                 $cassiopeia-template-color;
-$card-border-color:                  $cassiopeia-border-color;
+$cassiopeia-card-title-bg:            $cassiopeia-block-header-bg;
+$cassiopeia-card-title-icon-bg:       $cassiopeia-block-header-bg;
+$cassiopeia-card-title-icon-bg-hover: darken($cassiopeia-card-title-bg, 2%);
+$card-bg-color-light:                 hsl(0, 0%, 97%);
+$card-bg-color-dark:                  $cassiopeia-template-color;
+$card-border-color:                   $cassiopeia-border-color;
 
 // Alerts
-$state-success-text:                 $white !default;
-$state-success-bg:                   theme-color("success") !default;
-$state-success-border:               darken(theme-color("success"), 5%) !default;
+$state-success-text:                  $white !default;
+$state-success-bg:                    theme-color("success") !default;
+$state-success-border:                darken(theme-color("success"), 5%) !default;
 
-$state-info-text:                    $white !default;
-$state-info-bg:                      theme-color("info") !default;
-$state-info-border:                  darken(theme-color("info"), 7%) !default;
+$state-info-text:                     $white !default;
+$state-info-bg:                       theme-color("info") !default;
+$state-info-border:                   darken(theme-color("info"), 7%) !default;
 
-$state-warning-text:                 $white !default;
-$state-warning-bg:                   theme-color("warning") !default;
-$state-warning-border:               darken(theme-color("warning"), 5%) !default;
+$state-warning-text:                  $white !default;
+$state-warning-bg:                    theme-color("warning") !default;
+$state-warning-border:                darken(theme-color("warning"), 5%) !default;
 
-$state-danger-text:                  $white !default;
-$state-danger-bg:                    theme-color("danger") !default;
-$state-danger-border:                darken(theme-color("danger"), 5%) !default;
+$state-danger-text:                   $white !default;
+$state-danger-bg:                     theme-color("danger") !default;
+$state-danger-border:                 darken(theme-color("danger"), 5%) !default;
 
 // Treeselect
-$treeselect-line-height:             2.2rem;
+$treeselect-line-height:              2.2rem;
 
 // List
-$list-group-bg:                      $white-offset;
+$list-group-bg:                       $white;
 
 // Custom form
-$custom-select-bg:                   $gray-200;
+$custom-select-bg:                    $gray-200;
 
 // Custom form
-$custom-select-indicator-padding:    3rem;
-$custom-select-bg-size:              116rem;
-$custom-select-indicator:            url("../images/select-bg.svg");
-$custom-select-indicator-rtl:        url("../images/select-bg-rtl.svg");
-$custom-select-indicator-active:     url("../../../images/select-bg.svg");
-$custom-select-indicator-active-rtl: url("../../../images/select-bg-rtl.svg");
-$custom-select-background:           $custom-select-indicator no-repeat right center / $custom-select-bg-size; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
-$custom-select-background-rtl:       $custom-select-indicator-rtl no-repeat left center / $custom-select-bg-size; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
-$custom-select-bg-size-sm:           75rem;
-$custom-select-multiple-padding-y:   .3rem;
+$custom-select-indicator-padding:     3rem;
+$custom-select-bg-size:               116rem;
+$custom-select-indicator:             url("../images/select-bg.svg");
+$custom-select-indicator-rtl:         url("../images/select-bg-rtl.svg");
+$custom-select-indicator-active:      url("../../../images/select-bg.svg");
+$custom-select-indicator-active-rtl:  url("../../../images/select-bg-rtl.svg");
+$custom-select-background:            $custom-select-indicator no-repeat right center / $custom-select-bg-size; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
+$custom-select-background-rtl:        $custom-select-indicator-rtl no-repeat left center / $custom-select-bg-size; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
+$custom-select-bg-size-sm:            75rem;
+$custom-select-multiple-padding-y:    .3rem;
 
 //input
-$input-padding:                    .6rem 1rem;
-$input-border:                     solid 1px  #6d7784;
-$input-btn-padding-y:              .6rem;
-$input-btn-padding-x:              1rem;
+$input-padding:                       .6rem 1rem;
+$input-border:                        solid 1px  hsl(214, 10%, 47%);
+$input-btn-padding-y:                 .6rem;
+$input-btn-padding-x:                 1rem;
 
 // Modals
-$modal-header-height:                46px;
+$modal-header-height:                 46px;
 
 // Badges
-$badge-default-bg:                   #5e7082;
+$badge-default-bg:                    hsl(210, 16%, 44%);
 
 // Gutter
-$grid-gutter-width:                  15px !default;
-$cassiopeia-grid-gutter:             $grid-gutter-width;
+$grid-gutter-width:                   15px !default;
+$cassiopeia-grid-gutter:              $grid-gutter-width;
 
 // Z-Index list
-$zindex-negative:                  -1;
-$zindex-actions:                   auto;
-$zindex-toolbar:                   1000;
-$zindex-sidebar:                   1010;
-$zindex-header:                    1020;
-$zindex-alerts:                    1030;
-$zindex-modal-backdrop:            1040;
-$zindex-modal:                     1050;
-$zindex-popover:                   1060;
-$zindex-tooltip:                   1070;
-$zindex-mobile-bottom:             8000;
-$zindex-mobile-toggle:             9999;
-$zindex-mobile-menu:               9000;
+$zindex-negative:                     -1;
+$zindex-actions:                      auto;
+$zindex-toolbar:                      1000;
+$zindex-sidebar:                      1010;
+$zindex-header:                       1020;
+$zindex-alerts:                       1030;
+$zindex-modal-backdrop:               1040;
+$zindex-modal:                        1050;
+$zindex-popover:                      1060;
+$zindex-tooltip:                      1070;
+$zindex-mobile-bottom:                8000;
+$zindex-mobile-toggle:                9999;
+$zindex-mobile-menu:                  9000;
 
 // MetisMenu
-$metismenu:                        true !default;
+$metismenu:                           true !default;
