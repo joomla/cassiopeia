@@ -36,25 +36,25 @@
 
   &[type="success"] {
     --alert-accent-color: var(--success);
-    --alert-heading-text: rgba(255, 255, 255, .95);
+    --alert-heading-text: hsla(0, 0%, 100%, 0.95);
     --alert-close-button: var(--success);
   }
 
   &[type="info"] {
     --alert-accent-color: var(--info);
-    --alert-heading-text: rgba(255, 255, 255, .95);
+    --alert-heading-text: hsla(0, 0%, 100%, 0.95);
     --alert-close-button: var(--info);
   }
 
   &[type="warning"] {
     --alert-accent-color: var(--warning);
-    --alert-heading-text: #000;
-    --alert-close-button: #000;
+    --alert-heading-text: $black;
+    --alert-close-button: $black;
   }
 
   &[type="danger"] {
     --alert-accent-color: var(--danger);
-    --alert-heading-text: rgba(255, 255, 255, .95);
+    --alert-heading-text: hsla(0, 0%, 100%, 0.95);
     --alert-close-button: var(--danger);
   }
 

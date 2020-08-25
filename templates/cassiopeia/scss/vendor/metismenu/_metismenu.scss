@@ -30,9 +30,9 @@
         &:hover,
         &:focus,
         &:active {
-          color: #000;
+          color: $black;
           text-decoration: none;
-          background-color: rgba(0, 0, 0, .1);
+          background-color: hsla(0, 0%, 0%, .1);
         }
       }
 
@@ -112,7 +112,7 @@
           z-index: 1001;
           min-width: 180px;
           margin-top: 5px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+          box-shadow: 0 0 10px hsla(0, 0%, 0%, .1);
         }
       }
     }
