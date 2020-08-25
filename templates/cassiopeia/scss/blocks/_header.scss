@@ -25,7 +25,7 @@
 
   .site-description {
     font-size: 1rem;
-    color: $white-offset;
+    color: $white;
   }
 
   .navbar-brand {
@@ -34,7 +34,7 @@
     padding: 2.5rem ($cassiopeia-grid-gutter / 2);
     margin-right: auto;
     font-size: 2rem;
-    color: $white-offset;
+    color: $white;
 
     [dir=rtl] & {
       margin-right: 0;
@@ -52,7 +52,7 @@
 
     &:hover,
     &:focus {
-      color: darken($white-offset, 6%);
+      color: darken($white, 6%);
     }
   }
 
@@ -117,9 +117,9 @@
   }
 
   .navbar-toggler {
-    color: $white-offset;
+    color: $white;
     cursor: default;
-    border: 1px solid $white-offset;
+    border: 1px solid $white;
 
     .fas {
       font-size: 24px;
