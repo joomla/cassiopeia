@@ -187,7 +187,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php endif; ?>
 
 	<?php if ($this->countModules('footer') || ($this->params->get('backTop') == 1)) : ?>
-	<footer class="grid-child container-footer footer">
+	<footer class="grid-child container-footer footer full-width">
 		<jdoc:include type="modules" name="footer" style="none" />
 		<?php if ($this->params->get('backTop') == 1) : ?>
 			<a href="#top" id="back-top" class="back-top">
