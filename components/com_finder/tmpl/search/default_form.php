@@ -27,15 +27,16 @@ if ($this->params->get('show_autosuggest', 1))
 <form action="<?php echo Route::_($this->query->toUri()); ?>" method="get" class="js-finder-searchform">
 	<?php echo $this->getFields(); ?>
 	<fieldset class="com-finder__search word mb-3">
-    <legend class="com-finder__search-legend sr-only">
-	    <?php echo Text::_('COM_FINDER_SEARCH_FORM_LEGEND'); ?>
-    </legend>
+		<legend class="com-finder__search-legend sr-only">
+			<?php echo Text::_('COM_FINDER_SEARCH_FORM_LEGEND'); ?>
+		</legend>
 		<div class="form-inline">
 			<label for="q" class="mr-2">
 				<?php echo Text::_('COM_FINDER_SEARCH_TERMS'); ?>
 			</label>
 			<div class="input-group">
-				<input type="text" name="q" id="q" class="js-finder-search-query form-control" value="<?php echo $this->escape($this->query->input); ?>">
+				<input type="text" name="q" id="q" class="js-finder-search-query form-control"
+							 value="<?php echo $this->escape($this->query->input); ?>">
 				<span class="input-group-append">
 				<button type="submit" class="btn btn-primary">
 					<span class="fas fa-search icon-white" aria-hidden="true"></span>
@@ -52,10 +53,11 @@ if ($this->params->get('show_autosuggest', 1))
 	</fieldset>
 
 	<?php if ($this->params->get('show_advanced', 1)) : ?>
-		<fieldset id="advancedSearch" class="com-finder__advanced js-finder-advanced collapse<?php if ($this->params->get('expand_advanced', 0)) echo ' show'; ?>">
-      <legend class="com-finder__search-advanced sr-only">
-		    <?php echo Text::_('COM_FINDER_SEARCH_ADVANCED_LEGEND'); ?>
-      </legend>
+		<fieldset id="advancedSearch"
+							class="com-finder__advanced js-finder-advanced collapse<?php if ($this->params->get('expand_advanced', 0)) echo ' show'; ?>">
+			<legend class="com-finder__search-advanced sr-only">
+				<?php echo Text::_('COM_FINDER_SEARCH_ADVANCED_LEGEND'); ?>
+			</legend>
 			<?php if ($this->params->get('show_advanced_tips', 1)) : ?>
 				<div class="com-finder__tips card card-outline-secondary mb-3">
 					<div class="card-body">
@@ -64,7 +66,7 @@ if ($this->params->get('show_autosuggest', 1))
 						<?php echo Text::_('COM_FINDER_ADVANCED_TIPS_NOT'); ?>
 						<?php echo Text::_('COM_FINDER_ADVANCED_TIPS_OR'); ?>
 						<?php if ($this->params->get('tuplecount', 1) > 1) : ?>
-						<?php echo Text::_('COM_FINDER_ADVANCED_TIPS_PHRASE'); ?>
+							<?php echo Text::_('COM_FINDER_ADVANCED_TIPS_PHRASE'); ?>
 						<?php endif; ?>
 						<?php echo Text::_('COM_FINDER_ADVANCED_TIPS_OUTRO'); ?>
 					</div>
