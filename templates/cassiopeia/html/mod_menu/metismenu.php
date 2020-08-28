@@ -83,17 +83,18 @@ if ($tagId = $params->get('tag_id', ''))
 		case 'component':
 		case 'heading':
 		case 'url':
-			require ModuleHelper::getLayoutPath('mod_menu', 'metismenu_' . $item->type);
+			require ModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
 
 		default:
-			require ModuleHelper::getLayoutPath('mod_menu', 'metismenu_url');
+			require ModuleHelper::getLayoutPath('mod_menu', 'default_url');
 			break;
 	endswitch;
 
 	switch (true) :
 		// The next item is deeper.
 		case $item->deeper:
+			echo '<a class="has-arrow mm-collapsed" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></a>';
 			echo '<ul class="mm-collapse">';
 			break;
 
