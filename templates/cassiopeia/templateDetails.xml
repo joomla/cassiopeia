@@ -111,7 +111,7 @@
 					default="media/fonts/fira-sans.css"
 					validate="options"
 					>
-					<option value="">JNONE</option>
+					<option value="0">JNONE</option>
 					<option value="media/fonts/fira-sans.css">Fira Sans</option>
 					<option value="media/fonts/josefin-sans.css">Josefin Sans</option>
 				</field>
