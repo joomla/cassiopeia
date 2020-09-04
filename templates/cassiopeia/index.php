@@ -35,7 +35,6 @@ $templatePath = Uri::root() . 'templates/'.$this->template;
 $paramsColorName = $this->params->get('colorName');
 $assetColorName  = 'theme.' . $paramsColorName;
 $assetColorUri = $templatePath . '/css/global/' . $paramsColorName . '.css';
-//$wa->registerAndUseStyle('summer', 'templates/cassiopeia/css/global/summer.css');
 $wa->registerAndUseStyle($assetColorName, $assetColorUri);
 $this->getPreloadManager()->preload($wa->getAsset('style', $assetColorName)->getUri(), ['as' => 'style']);
 
