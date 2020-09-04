@@ -81,6 +81,20 @@
 				</field>
 
 				<field
+					name="colorName"
+					type="filelist"
+					label="TPL_CASSIOPEIA_COLOR_NAME_LABEL"
+					description="TPL_CASSIOPEIA_COLOR_NAME_DESC"
+					stripext="1"
+					directory="templates/cassiopeia/css/global/"
+					hide_none="1"
+					hide_default="1"
+					fileFilter="\.css$"
+					exclude="\.min\.css$"
+					default="summer"
+				/>
+
+				<field
 					name="stickyHeader"
 					type="radio"
 					label="TPL_CASSIOPEIA_STICKY_LABEL"
