@@ -1,9 +1,10 @@
 // Global
 $cassiopeia-template-color-dark:      hsl(220, 67%, 20%) !default;
 $cassiopeia-template-color:           hsl(242, 30%, 36%) !default;
+$cassiopeia-template-color-light:     hsl(0, 0%, 94%) !default;
 $cassiopeia-container-main-bg:        hsl(0, 0%, 95%) !default;
 $cassiopeia-border-color:             hsl(210, 14%, 89%) !default;
-$cassiopeia-box-shadow:               0 0 3px hsla(0, 0%, 0%, 0.04) !default;
+$cassiopeia-box-shadow:               0 0 3px hsla(0, 0%, 0%, .04) !default;
 $cassiopeia-block-header-bg:          hsl(0, 0%, 96%) !default;
 $cassiopeia-header-grad:              linear-gradient(135deg, $cassiopeia-template-color-dark 0%, $cassiopeia-template-color 100%);
 $input-max-width:                     100%;
@@ -32,6 +33,7 @@ $grays: (
   900: $gray-900
 );
 
+//$primary: var(--cassiopeia-color-primary);
 $blue:                                $cassiopeia-template-color-dark;
 $indigo:                              hsl(263, 90%, 51%);
 $purple:                              hsl(261, 51%, 51%);
@@ -69,6 +71,50 @@ $theme-colors: (
   light: $gray-100,
   dark: $gray-800
 );
+
+// Autumn
+$autumn-color-primary: hsl(203, 54%, 39%);
+$autumn-color-link: hsl(203, 54%, 39%);
+$autumn-color-hover: hsl(210, 41%, 30%);
+$autumn-color-menu-hover: hsl(210, 41%, 30%);
+$autumn-color-brand: hsl(210, 41%, 30%);
+$autumn-color-btn: hsl(203, 54%, 39%);
+$autumn-color-btn-hover: hsl(203, 76%, 59%);;
+$autumn-color-btn-txt: $white;
+$autumn-color-btn-hover-txt: $white;
+
+// Spring
+$spring-color-primary: hsl(83, 100%, 21%);
+$spring-color-link: hsl(83, 100%, 21%);
+$spring-color-hover: hsl(58, 87%, 46%);
+$spring-color-menu-hover: hsl(83, 100%, 21%);
+$spring-color-brand: hsl(58, 100%, 21%);
+$spring-color-btn: hsl(83, 100%, 21%);
+$spring-color-btn-hover: hsl(58, 87%, 46%);
+$spring-color-btn-txt: $white;
+$spring-color-btn-hover-txt: hsl(83, 100%, 21%);
+
+// Summer
+$summer-color-primary: hsl(45, 100%, 51%) ;
+$summer-color-link: hsl(27, 77%, 25%);
+$summer-color-hover: hsl(22, 91%, 55%);
+$summer-color-menu-hover: hsl(22, 91%, 55%);
+$summer-color-brand: hsl(27, 77%, 25%);
+$summer-color-btn: hsl(45, 100%, 51%);
+$summer-color-btn-hover: hsl(45, 100%, 44%);
+$summer-color-btn-txt: hsl(210, 11%, 15%);
+$summer-color-btn-hover-txt: hsl(210, 11%, 15%);
+
+// Winter
+$winter-color-primary: hsl(0, 0%, 65%) ;
+$winter-color-link: hsl(0, 0%, 65%);;
+$winter-color-hover: hsl(0, 0%, 85%);
+$winter-color-menu-hover: hsl(0, 0%, 30%);
+$winter-color-brand: hsl(0, 0%, 11%);
+$winter-color-btn: hsl(0, 0%, 15%);
+$winter-color-btn-hover: hsl(0, 0%, 42%);;
+$winter-color-btn-txt: $white;
+$winter-color-btn-hover-txt: $white;
 
 // Toolbar
 $cassiopeia-toolbar-line-height:      1.8rem;
@@ -110,19 +156,19 @@ $card-border-color:                   $cassiopeia-border-color;
 // Alerts
 $state-success-text:                  $white !default;
 $state-success-bg:                    theme-color("success") !default;
-$state-success-border:                darken(theme-color("success"), 5%) !default;
+//$state-success-border:                darken(theme-color("success"), 5%) !default;
 
 $state-info-text:                     $white !default;
 $state-info-bg:                       theme-color("info") !default;
-$state-info-border:                   darken(theme-color("info"), 7%) !default;
+//$state-info-border:                   darken(theme-color("info"), 7%) !default;
 
 $state-warning-text:                  $white !default;
 $state-warning-bg:                    theme-color("warning") !default;
-$state-warning-border:                darken(theme-color("warning"), 5%) !default;
+//$state-warning-border:                darken(theme-color("warning"), 5%) !default;
 
 $state-danger-text:                   $white !default;
 $state-danger-bg:                     theme-color("danger") !default;
-$state-danger-border:                 darken(theme-color("danger"), 5%) !default;
+//$state-danger-border:                 darken(theme-color("danger"), 5%) !default;
 
 // Treeselect
 $treeselect-line-height:              2.2rem;

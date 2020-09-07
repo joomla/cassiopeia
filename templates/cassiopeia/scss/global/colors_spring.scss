@@ -1,5 +1,14 @@
+// Variables, Functions and Mixins
+@import "../tools/tools";
+
 :root {
-  --cassiopeia-color-primary: hsl(83, 100%, 21%);
-  --cassiopeia-color-hover: hsl(58, 87%, 46%);
-  --cassiopeia-color-brand: hsl(58, 100%, 21%);
+  --cassiopeia-color-primary: #{$spring-color-primary};
+  --cassiopeia-color-link: #{$spring-color-link};
+  --cassiopeia-color-hover: #{$spring-color-hover};
+  --cassiopeia-color-menu-hover: #{$spring-color-menu-hover};
+  --cassiopeia-color-brand: #{$spring-color-brand};
+  --cassiopeia-color-btn: #{$spring-color-btn};
+  --cassiopeia-color-btn-hover: #{$spring-color-btn-hover};
+  --cassiopeia-color-btn-hover-txt: #{$spring-color-btn-hover-txt};
+  --cassiopeia-color-btn-txt: #{$spring-color-btn-txt};
 }

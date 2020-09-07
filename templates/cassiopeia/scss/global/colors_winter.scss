@@ -1,5 +1,14 @@
+// Variables, Functions and Mixins
+@import "../tools/tools";
+
 :root {
-  --cassiopeia-color-primary: hsl(0, 0%, 65%);
-  --cassiopeia-color-hover: hsl(0, 0%, 85%);
-  --cassiopeia-color-brand: hsl(0, 0%, 11%);
+  --cassiopeia-color-primary: #{$winter-color-primary};
+  --cassiopeia-color-link: #{$winter-color-link};
+  --cassiopeia-color-hover: #{$winter-color-hover};
+  --cassiopeia-color-menu-hover: #{$winter-color-menu-hover};
+  --cassiopeia-color-brand: #{$winter-color-brand};
+  --cassiopeia-color-btn: #{$winter-color-btn};
+  --cassiopeia-color-btn-hover: #{$winter-color-btn-hover};
+  --cassiopeia-color-btn-hover-txt: #{$winter-color-btn-hover-txt};
+  --cassiopeia-color-btn-txt: #{$winter-color-btn-txt};
 }

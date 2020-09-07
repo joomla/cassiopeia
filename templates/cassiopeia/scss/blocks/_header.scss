@@ -3,24 +3,17 @@
 .container-header {
   position: relative;
   z-index: 10;
-  background-color: $cassiopeia-template-color;
-  background-image: $cassiopeia-header-grad;
-  box-shadow: 0 5px 5px hsla(0, 0%, 0%,.03) inset;
 
   @include media-breakpoint-down(sm) {
     position: relative !important;
   }
 
-  header {
-    width: 100%;
-    max-width: 72.1875rem;
-    padding: 0 ($cassiopeia-grid-gutter / 2);
-    margin: 0 auto;
-
+  .grid-child {
+    flex-wrap: wrap;
   }
 
   nav {
-    padding: 2.5rem ($cassiopeia-grid-gutter / 2);
+    padding: ($cassiopeia-grid-gutter / 2);
   }
 
   .site-description {
@@ -31,10 +24,10 @@
   .navbar-brand {
     position: relative;
     display: inline-block;
-    padding: 2.5rem ($cassiopeia-grid-gutter / 2);
+    padding: $cassiopeia-grid-gutter ($cassiopeia-grid-gutter / 2);
     margin-right: auto;
     font-size: 2rem;
-    color: $white;
+    color: var(--cassiopeia-color-brand);
 
     [dir=rtl] & {
       margin-right: 0;
@@ -47,12 +40,12 @@
     }
 
     a {
-      color: $white;
+      color: var(--cassiopeia-color-brand);
     }
 
     &:hover,
     &:focus {
-      color: darken($white, 6%);
+      color: var(--cassiopeia-color-brand);
     }
   }
 
@@ -66,14 +59,13 @@
 
   .mod-menu {
     flex: 1 0 100%;
-    margin: 0;
     padding: 0;
+    margin: 0;
     list-style: none;
-    color: $white;
 
     @include media-breakpoint-up(md) {
-      flex: 1 1 0%;
       display: flex;
+      flex: 1 1 0%;
       flex-direction: row;
     }
 
@@ -104,9 +96,9 @@
   }
 
   .navbar-toggler {
-    color: $white;
+    color: var(--cassiopeia-color-primary);
     cursor: default;
-    border: 1px solid $white;
+    border: 1px solid var(--cassiopeia-color-primary);
 
     .fas {
       font-size: 24px;
@@ -114,7 +106,7 @@
   }
 
   .form-inline {
-    margin-top: .75rem;
+    padding: $cassiopeia-grid-gutter ($cassiopeia-grid-gutter / 2);
 
     @include media-breakpoint-up(md) {
       margin-top: 0;

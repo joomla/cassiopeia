@@ -33,7 +33,7 @@ h6 {
 }
 
 a {
-  color: var(--cassiopeia-color-primary);
+  color: var(--cassiopeia-color-link);
 
   &:hover,
   &:focus {
@@ -46,13 +46,15 @@ a {
 }
 
 .btn-primary {
-  background-color: var(--cassiopeia-color-primary);
-  border-color: var(--cassiopeia-color-primary);
+  color: var(--cassiopeia-color-btn-txt);
+  background-color: var(--cassiopeia-color-btn);
+  border-color: var(--cassiopeia-color-btn);
 
   &:hover,
   &:focus {
-    background-color: var(--cassiopeia-color-hover);
-    border-color: var(--cassiopeia-color-hover);
+    color: var(--cassiopeia-color-btn-hover-txt);
+    background-color: var(--cassiopeia-color-btn-hover);
+    border-color: var(--cassiopeia-color-btn-hover);
   }
 }
 
