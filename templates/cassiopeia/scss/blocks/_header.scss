@@ -13,7 +13,7 @@
   }
 
   nav {
-    padding: ($cassiopeia-grid-gutter / 2);
+    padding: ($cassiopeia-grid-gutter / 2) 0;
   }
 
   .site-description {
@@ -24,7 +24,7 @@
   .navbar-brand {
     position: relative;
     display: inline-block;
-    padding: $cassiopeia-grid-gutter ($cassiopeia-grid-gutter / 2);
+    padding: $cassiopeia-grid-gutter 0;
     margin-right: auto;
     font-size: 2rem;
     color: var(--cassiopeia-color-brand);
@@ -106,7 +106,7 @@
   }
 
   .form-inline {
-    padding: $cassiopeia-grid-gutter ($cassiopeia-grid-gutter / 2);
+    padding: $cassiopeia-grid-gutter 0;
 
     @include media-breakpoint-up(md) {
       margin-top: 0;
