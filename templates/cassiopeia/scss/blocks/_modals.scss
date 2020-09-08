@@ -7,10 +7,10 @@
 
   .btn-primary:not([href]),
   .btn-success:not([href]) {
-    color: $white;
+    color: color("white");
 
     &:hover {
-      color: $white;
+      color: color("white");
     }
   }
 }

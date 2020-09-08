@@ -57,19 +57,19 @@ $colors: (
   teal: $teal,
   cyan: $cyan,
   white: $white,
-  gray: $gray-600,
-  gray-dark: $gray-800
+  gray: gray(600),
+  gray-dark: gray(800)
 );
 
 $theme-colors: (
   primary: $blue,
-  secondary: $gray-600,
+  secondary: gray(600),
   success: $green,
   info: $cyan,
   warning: $yellow,
   danger: $red,
-  light: $gray-100,
-  dark: $gray-800
+  light: gray(100),
+  dark: gray(800)
 );
 
 // Autumn
@@ -80,8 +80,8 @@ $autumn-color-menu-hover: hsl(210, 41%, 30%);
 $autumn-color-brand: hsl(210, 41%, 30%);
 $autumn-color-btn: hsl(203, 54%, 39%);
 $autumn-color-btn-hover: hsl(203, 76%, 59%);;
-$autumn-color-btn-txt: $white;
-$autumn-color-btn-hover-txt: $white;
+$autumn-color-btn-txt: color("white");
+$autumn-color-btn-hover-txt: color("white");
 
 // Spring
 $spring-color-primary: hsl(83, 100%, 21%);
@@ -91,7 +91,7 @@ $spring-color-menu-hover: hsl(83, 100%, 21%);
 $spring-color-brand: hsl(58, 100%, 21%);
 $spring-color-btn: hsl(83, 100%, 21%);
 $spring-color-btn-hover: hsl(58, 87%, 46%);
-$spring-color-btn-txt: $white;
+$spring-color-btn-txt: color("white");
 $spring-color-btn-hover-txt: hsl(83, 100%, 21%);
 
 // Summer
@@ -113,8 +113,8 @@ $winter-color-menu-hover: hsl(0, 0%, 30%);
 $winter-color-brand: hsl(0, 0%, 11%);
 $winter-color-btn: hsl(0, 0%, 15%);
 $winter-color-btn-hover: hsl(0, 0%, 42%);;
-$winter-color-btn-txt: $white;
-$winter-color-btn-hover-txt: $white;
+$winter-color-btn-txt: color("white");
+$winter-color-btn-hover-txt: color("white");
 
 // Toolbar
 $cassiopeia-toolbar-line-height:      1.8rem;
@@ -148,25 +148,25 @@ $cassiopeia-tabs-active-highlight:    theme-color("primary");
 // Cards
 $cassiopeia-card-title-bg:            $cassiopeia-block-header-bg;
 $cassiopeia-card-title-icon-bg:       $cassiopeia-block-header-bg;
-$cassiopeia-card-title-icon-bg-hover: darken($cassiopeia-card-title-bg, 2%);
-$card-bg-color-light:                 $gray-100;
+$cassiopeia-card-title-icon-bg-hover: scale-color($cassiopeia-card-title-bg, $lightness: 2%);
+$card-bg-color-light:                 gray(100);
 $card-bg-color-dark:                  $cassiopeia-template-color;
 $card-border-color:                   $cassiopeia-border-color;
 
 // Alerts
-$state-success-text:                  $white !default;
+$state-success-text:                  color("white") !default;
 $state-success-bg:                    theme-color("success") !default;
 $state-success-border:                scale-color(theme-color("success"), $lightness: -5%) !default;
 
-$state-info-text:                     $white !default;
+$state-info-text:                     color("white") !default;
 $state-info-bg:                       theme-color("info") !default;
 $state-info-border:                   scale-color(theme-color("info"), $lightness: -7%) !default;
 
-$state-warning-text:                  $white !default;
+$state-warning-text:                  color("white") !default;
 $state-warning-bg:                    theme-color("warning") !default;
 $state-warning-border:                scale-color(theme-color("warning"), $lightness: -5%) !default;
 
-$state-danger-text:                   $white !default;
+$state-danger-text:                   color("white") !default;
 $state-danger-bg:                     theme-color("danger") !default;
 $state-danger-border:                 scale-color(theme-color("danger"), $lightness: -5%) !default;
 
@@ -174,10 +174,10 @@ $state-danger-border:                 scale-color(theme-color("danger"), $lightn
 $treeselect-line-height:              2.2rem;
 
 // List
-$list-group-bg:                       $white;
+$list-group-bg:                       color("white");
 
 // Custom form
-$custom-select-bg:                    $gray-200;
+$custom-select-bg:                    gray(200);
 
 // Custom form
 $custom-select-indicator-padding:     3rem;
@@ -193,7 +193,7 @@ $custom-select-multiple-padding-y:    .3rem;
 
 //input
 $input-padding:                       .6rem 1rem;
-$input-border:                        solid 1px $gray-600;
+$input-border:                        solid 1px gray(600);
 $input-btn-padding-y:                 .6rem;
 $input-btn-padding-x:                 1rem;
 
@@ -201,7 +201,7 @@ $input-btn-padding-x:                 1rem;
 $modal-header-height:                 46px;
 
 // Badges
-$badge-default-bg:                    $gray-600;
+$badge-default-bg:                    gray(600);
 
 // Grid breakpoints
 //

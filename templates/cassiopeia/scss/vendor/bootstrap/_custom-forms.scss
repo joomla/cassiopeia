@@ -38,7 +38,7 @@
 
       option {
         color: $custom-select-color;
-        background-color: $white;
+        background-color: color("white");
       }
     }
 
@@ -48,7 +48,7 @@
 
       option {
         color: $custom-select-color;
-        background-color: $white;
+        background-color: color("white");
       }
     }
   }
@@ -56,6 +56,6 @@
   optgroup,
   option {
     color: var(--dark);
-    background-color: $white;
+    background-color: color("white");
   }
 }
