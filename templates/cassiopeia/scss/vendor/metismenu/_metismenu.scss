@@ -25,14 +25,14 @@
           }
         }
         &:hover {
-          color: $white;
+          color: color("white");
           background-color: var(--cassiopeia-color-menu-hover);
         }
         > span,
         > a {
           flex: 1 0 0%;
           &:hover {
-            color: $white;
+            color: color("white");
           }
         }
       }

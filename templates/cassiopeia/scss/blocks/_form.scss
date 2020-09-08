@@ -2,7 +2,7 @@
 
 .form-control {
   max-width: $input-max-width;
-  background-color: $white;
+  background-color: color("white");
 
   &.input-xlarge {
     max-width: 21.875rem;
@@ -76,7 +76,7 @@ td .form-control {
   max-width: 100%;
   padding: .25em;
   margin: .25em;
-  color: $white;
+  color: color("white");
   background: $black;
 
   [dir=ltr] & {

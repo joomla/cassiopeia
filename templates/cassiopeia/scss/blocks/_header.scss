@@ -18,7 +18,7 @@
 
   .site-description {
     font-size: 1rem;
-    color: $white;
+    color: color("white");
   }
 
   .navbar-brand {
@@ -128,7 +128,7 @@
 .container-title {
   padding-top: 13px;
   padding-bottom: 13px;
-  color: $white;
+  color: color("white");
   background-color: $cassiopeia-template-color;
 
   .row {

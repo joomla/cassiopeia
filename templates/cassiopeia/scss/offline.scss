@@ -5,8 +5,8 @@
 @import "tools/tools";
 
 html {
-  background: radial-gradient(circle, $gray-100, $gray-200);
-  background-color: $cyan;
+  background: radial-gradient(circle, gray(gray-100), gray(gray));
+  background-color: color(cyan);
   background-image: none;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -16,7 +16,7 @@ body {
   padding: 0;
   margin: 0;
   font: 14px / 18px sans-serif;
-  color: $gray-700;
+  color: gray(700);
   background-color: transparent;
 }
 
@@ -36,7 +36,7 @@ body {
   width: 100%;
   max-width: 30em;
   margin: 0 auto 60px;
-  background-color: $white;
+  background-color: color("white");
   border: 1px solid hsla(0, 0%, 0%,.1);
   border-radius: 5px;
   box-shadow: 0 0 10px hsla(0, 0%, 0%,.05);
@@ -110,7 +110,7 @@ input {
   z-index: 1;
   padding: 12px;
   margin-top: 2px;
-  background-color: $white;
+  background-color: color("white");
   border: 1px solid hsla(0, 0%, 0%,.05);
   border-radius: 50%;
   box-shadow: 0 0 5px hsla(0, 0%, 0%,.075);

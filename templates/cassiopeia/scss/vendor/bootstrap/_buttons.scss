@@ -14,13 +14,13 @@
 }
 
 .btn-secondary {
-  color: $gray-800;
-  background-color: $white;
-  border-color: $gray-400;
+  color: gray(800);
+  background-color: color("white");
+  border-color: gray(400);
 
   &:hover,
   &:focus {
-    color: $gray-800;
-    background-color: $gray-100;
+    color: gray(800);
+    background-color: gray(100);
   }
 }
