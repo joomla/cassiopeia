@@ -148,7 +148,7 @@ $cassiopeia-tabs-active-highlight:    theme-color("primary");
 // Cards
 $cassiopeia-card-title-bg:            $cassiopeia-block-header-bg;
 $cassiopeia-card-title-icon-bg:       $cassiopeia-block-header-bg;
-$cassiopeia-card-title-icon-bg-hover: darken($cassiopeia-card-title-bg, 2%);
+$cassiopeia-card-title-icon-bg-hover: scale-color($cassiopeia-card-title-bg, $lightness: 2%);
 $card-bg-color-light:                 gray(100);
 $card-bg-color-dark:                  $cassiopeia-template-color;
 $card-border-color:                   $cassiopeia-border-color;
@@ -156,19 +156,19 @@ $card-border-color:                   $cassiopeia-border-color;
 // Alerts
 $state-success-text:                  color("white") !default;
 $state-success-bg:                    theme-color("success") !default;
-//$state-success-border:                darken(theme-color("success"), 5%) !default;
+$state-success-border:                scale-color(theme-color("success"), $lightness: -5%) !default;
 
 $state-info-text:                     color("white") !default;
 $state-info-bg:                       theme-color("info") !default;
-//$state-info-border:                   darken(theme-color("info"), 7%) !default;
+$state-info-border:                   scale-color(theme-color("info"), $lightness: -7%) !default;
 
 $state-warning-text:                  color("white") !default;
 $state-warning-bg:                    theme-color("warning") !default;
-//$state-warning-border:                darken(theme-color("warning"), 5%) !default;
+$state-warning-border:                scale-color(theme-color("warning"), $lightness: -5%) !default;
 
 $state-danger-text:                   color("white") !default;
 $state-danger-bg:                     theme-color("danger") !default;
-//$state-danger-border:                 darken(theme-color("danger"), 5%) !default;
+$state-danger-border:                 scale-color(theme-color("danger"), $lightness: -5%) !default;
 
 // Treeselect
 $treeselect-line-height:              2.2rem;
