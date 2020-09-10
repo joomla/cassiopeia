@@ -1,0 +1,59 @@
+.navbar {
+  padding: ($cassiopeia-grid-gutter / 2) 0;
+
+  .navbar-collapse {
+    &.show {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  .mod-menu {
+    flex: 1 0 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include media-breakpoint-up(md) {
+      display: flex;
+      flex: 1 1 0;
+      flex-direction: row;
+    }
+
+    > li {
+      position: relative;
+      letter-spacing: 1.75px;
+
+      @include media-breakpoint-up(md) {
+        + li {
+          margin-left: 1.55em;
+        }
+      }
+
+      > a,
+      > span {
+        position: relative;
+        color: currentColor;
+        text-decoration: none;
+      }
+    }
+
+    .parent {
+      > ul {
+        display: none;
+        color: $cassiopeia-template-color-dark;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    color: var(--cassiopeia-color-primary);
+    cursor: default;
+    border: 1px solid var(--cassiopeia-color-primary);
+
+    .fas {
+      font-size: 24px;
+    }
+  }
+}
