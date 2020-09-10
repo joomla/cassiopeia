@@ -5,9 +5,8 @@
 @import "tools/tools";
 
 html {
-  background: radial-gradient(circle, gray(gray-100), gray(gray));
-  background-color: color(cyan);
-  background-image: none;
+  background-color: $gray-200;
+  background: radial-gradient(circle, gray(100), gray(400));
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
