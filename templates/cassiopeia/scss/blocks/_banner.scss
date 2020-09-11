@@ -9,11 +9,11 @@
 
   .banner-overlay {
     height: 70vh;
+    background-color: hsla(0, 0%, 0%, .5);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: top,center;
     background-size: cover;
-    background-color: hsla(0, 0%, 0%, .5);
 
 
     .overlay {
@@ -23,10 +23,12 @@
       justify-content: center;
       height: 100%;
       padding: $cassiopeia-grid-gutter;
+      text-align: center;
 
-      h2 {
-        font-size: 3rem;
+      .text-thin {
+        font-weight: $font-weight-lighter;
       }
+
     }
   }
 }
@@ -45,12 +47,12 @@
 
 .colors_summer {
   .banner-overlay {
-    background-image: url(../../../images/headers/jumbotron-image-bg_summer.jpg);
+    background-image: url('../../../images/headers/jumbotron-image-bg_summer.jpg');
   }
 }
 
 .colors_winter {
   .banner-overlay {
-    background-image: url(../../../images/headers/jumbotron-image-bg_winter.jpg);
+    background-image: url('../../../images/headers/jumbotron-image-bg_winter.jpg');
   }
 }
