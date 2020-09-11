@@ -85,3 +85,9 @@ meter {
     }
   }
 }
+
+.awesomplete {
+  input {
+    @include border-right-radius(0);
+  }
+}
