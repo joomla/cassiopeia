@@ -1,5 +1,5 @@
 .navbar {
-  padding: ($cassiopeia-grid-gutter / 2) 0;
+  padding: $cassiopeia-grid-gutter 0;
 
   .navbar-collapse {
     &.show {
@@ -40,7 +40,7 @@
 
       &.active {
         > a {
-          color: var(--cassiopeia-color-hover);
+          color: var(--cassiopeia-color-primary);
         }
 
         &:hover > a {
@@ -58,6 +58,7 @@
   }
 
   .navbar-toggler {
+    margin-left: $cassiopeia-grid-gutter;
     color: var(--cassiopeia-color-primary);
     cursor: default;
     border: 1px solid var(--cassiopeia-color-primary);
