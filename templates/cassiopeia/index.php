@@ -106,7 +106,8 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	. ($task ? ' task-' . $task : ' no-task')
 	. ($itemid ? ' itemid-' . $itemid : '')
 	. ' ' . $pageclass
-	. $hasClass;
+	. $hasClass
+	. ' ' .$paramsColorName;
 	echo ($this->direction == 'rtl' ? ' rtl' : '');
 ?>">
 	<header class="header container-header full-width">

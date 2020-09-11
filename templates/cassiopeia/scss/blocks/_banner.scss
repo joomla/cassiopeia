@@ -1,7 +1,6 @@
 // Banner
 
 .container-banner {
-  color: color("white");
 
   img {
     display: block;
@@ -14,6 +13,8 @@
     background-attachment: fixed;
     background-position: top,center;
     background-size: cover;
+    background-color: hsla(0, 0%, 0%, .5);
+
 
     .overlay {
       display: flex;
@@ -22,12 +23,34 @@
       justify-content: center;
       height: 100%;
       padding: $cassiopeia-grid-gutter;
-      color: color("white");
-      background-color: hsla(0, 0%, 0%, .5);
 
       h2 {
         font-size: 3rem;
       }
     }
+  }
+}
+
+.colors_autumn {
+  .banner-overlay {
+    background-image: url(../../../images/headers/jumbotron-image-bg_autumn.jpg);
+  }
+}
+
+.colors_spring {
+  .banner-overlay {
+    background-image: url(../../../images/headers/jumbotron-image-bg_spring.jpg);
+  }
+}
+
+.colors_summer {
+  .banner-overlay {
+    background-image: url(../../../images/headers/jumbotron-image-bg_summer.jpg);
+  }
+}
+
+.colors_winter {
+  .banner-overlay {
+    background-image: url(../../../images/headers/jumbotron-image-bg_winter.jpg);
   }
 }
