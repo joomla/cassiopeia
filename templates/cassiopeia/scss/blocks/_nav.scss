@@ -37,6 +37,16 @@
         color: currentColor;
         text-decoration: none;
       }
+
+      &.active {
+        > a {
+          color: var(--cassiopeia-color-hover);
+        }
+
+        &:hover > a {
+          color: $white;
+        }
+      }
     }
 
     .parent {
