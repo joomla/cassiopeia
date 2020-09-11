@@ -80,8 +80,8 @@ $autumn-color-menu-hover: hsl(210, 41%, 30%);
 $autumn-color-brand: hsl(210, 41%, 30%);
 $autumn-color-btn: hsl(203, 54%, 39%);
 $autumn-color-btn-hover: hsl(203, 76%, 59%);;
-$autumn-color-btn-txt: color("white");
-$autumn-color-btn-hover-txt: color("white");
+$autumn-color-btn-txt: $white;
+$autumn-color-btn-hover-txt: $white;
 
 // Spring
 $spring-color-primary: hsl(83, 100%, 21%);
@@ -91,7 +91,7 @@ $spring-color-menu-hover: hsl(83, 100%, 21%);
 $spring-color-brand: hsl(58, 100%, 21%);
 $spring-color-btn: hsl(83, 100%, 21%);
 $spring-color-btn-hover: hsl(58, 87%, 46%);
-$spring-color-btn-txt: color("white");
+$spring-color-btn-txt: $white;
 $spring-color-btn-hover-txt: hsl(83, 100%, 21%);
 
 // Summer
@@ -113,8 +113,8 @@ $winter-color-menu-hover: hsl(0, 0%, 30%);
 $winter-color-brand: hsl(0, 0%, 11%);
 $winter-color-btn: hsl(0, 0%, 15%);
 $winter-color-btn-hover: hsl(0, 0%, 42%);;
-$winter-color-btn-txt: color(white);
-$winter-color-btn-hover-txt: color(white);
+$winter-color-btn-txt: $white;
+$winter-color-btn-hover-txt: $white;
 
 // Toolbar
 $cassiopeia-toolbar-line-height:      1.8rem;
