@@ -3,7 +3,7 @@
 .footer {
   padding: 2.5rem ($cassiopeia-grid-gutter / 2);
   margin-top: $cassiopeia-grid-gutter;
-  color: color("white");
+  color: gray(900);
   background: $cassiopeia-template-color-light;
 
   a {
@@ -14,7 +14,7 @@
     align-self: flex-end;
     height: 40px;
     padding: 8px 11px;
-    color: $cassiopeia-template-color;
+    color: var(--cassiopeia-color-brand);
     background: color("white");
     border-radius: 3px;
 
