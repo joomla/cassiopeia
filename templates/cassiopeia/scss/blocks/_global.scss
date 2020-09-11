@@ -80,9 +80,32 @@ meter {
 
 .pagenavigation {
   .pagination {
+    justify-content: space-between;
+
     li.next:only-child {
       margin-left: auto;
     }
+  }
+}
+
+.page-item {
+  &:first-child {
+    .page-link {
+      @include border-radius($border-radius);
+    }
+  }
+  &:last-child {
+    .page-link {
+      @include border-radius($border-radius);
+    }
+  }
+}
+
+.page-link {
+  color: var(--cassiopeia-color-link);
+  border: 1px solid $white;
+  &:hover {
+    color: var(--cassiopeia-color-link);
   }
 }
 
