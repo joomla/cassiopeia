@@ -62,6 +62,9 @@
 
     &.wrapper-fluid {
       grid-template-columns: [full-start] minmax(0, 1fr) [main-start] repeat(4, minmax(0, 25%)) [main-end] minmax(0, 1fr) [full-end];
+      .grid-child {
+        max-width: none;
+      }
     }
   }
 }
