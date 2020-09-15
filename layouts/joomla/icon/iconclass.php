@@ -142,7 +142,7 @@ switch ($icon)
 
 if ($html !== false)
 {
-	$icon = '<span class="' . $icon . '" aria-hidden="true"></span>';
+	$icon = '<span class="' . $iconPrefix . $icon . '" aria-hidden="true"></span>';
 }
 
-echo $icon;
+echo $iconPrefix . $icon;
