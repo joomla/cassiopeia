@@ -787,7 +787,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
-				// Articles (menun header)
+				// Articles (menu header)
 				'menutype'     => $menuTypes[0],
 				'title'        => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MENUS_ITEM_16_TITLE'),
 				'type'         => 'heading',
