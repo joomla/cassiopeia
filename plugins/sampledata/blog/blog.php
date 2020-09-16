@@ -279,14 +279,14 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 1,
 				'ordering' => 2,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-1000x400.png',
 					'float_intro'            => 'left',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
-					'image_fulltext'         => '',
-					'float_fulltext'         => '',
+					'image_fulltext'         => 'images/sampledata/cassiopeia/rocket-300x250.png',
+					'float_fulltext'         => 'left',
 					'image_fulltext_alt'     => '',
-					'image_fulltext_caption' => ''
+					'image_fulltext_caption' => 'Joomla 4',
 				)
 			),
 			array(
@@ -294,14 +294,14 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 1,
 				'ordering' => 1,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-1000x400.png',
 					'float_intro'            => 'right',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
-					'image_fulltext'         => '',
+					'image_fulltext'         => 'images/sampledata/cassiopeia/rocket-300x250.png',
 					'float_fulltext'         => '',
 					'image_fulltext_alt'     => '',
-					'image_fulltext_caption' => ''
+					'image_fulltext_caption' => 'Joomla 4',
 				)
 			),
 			array(
@@ -309,14 +309,14 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 1,
 				'ordering' => 0,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-1000x400.png',
 					'float_intro'            => 'left',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
-					'image_fulltext'         => '',
+					'image_fulltext'         => 'images/sampledata/cassiopeia/rocket-300x250.png',
 					'float_fulltext'         => '',
 					'image_fulltext_alt'     => '',
-					'image_fulltext_caption' => ''
+					'image_fulltext_caption' => 'Joomla 4',
 				)
 			),
 			array(
@@ -329,7 +329,23 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 0,
 				'ordering' => 0,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-1000x400.png',
+					'float_intro'            => '',
+					'image_intro_alt'        => '',
+					'image_intro_caption'    => '',
+					'image_fulltext'         => '',
+					'float_fulltext'         => '',
+					'image_fulltext_alt'     => '',
+					'image_fulltext_caption' => ''
+
+				)
+			),
+			array(
+				'catid'    => $catIds[2],
+				'featured' => 0,
+				'ordering' => 0,
+				'images'   => array(
+					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-1000x400.png',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -344,22 +360,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 0,
 				'ordering' => 0,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
-					'float_intro'            => '',
-					'image_intro_alt'        => '',
-					'image_intro_caption'    => '',
-					'image_fulltext'         => '',
-					'float_fulltext'         => '',
-					'image_fulltext_alt'     => '',
-					'image_fulltext_caption' => ''
-				)
-			),
-			array(
-				'catid'    => $catIds[2],
-				'featured' => 0,
-				'ordering' => 0,
-				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-1000x400.png',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -787,7 +788,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
-				// Articles (menu header)
+				// Articles (menun header)
 				'menutype'     => $menuTypes[0],
 				'title'        => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MENUS_ITEM_16_TITLE'),
 				'type'         => 'heading',
@@ -1186,27 +1187,24 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
-				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_12_TITLE'),
-				'ordering'  => 1,
-				'position'  => 'postinstall',
-				'module'    => 'mod_feed',
-				'client_id' => 1,
+				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_13_TITLE'),
+				'ordering'  => 0,
+				'position'  => 'sidebar-right',
+				'module'    => 'mod_random_image',
+				'client_id' => 0,
 				'params'    => array(
-					'rssurl'         => 'https://www.joomla.org/announcements/release-news.feed',
-					'rssrtl'         => 0,
-					'rsstitle'       => 1,
-					'rssdesc'        => 1,
-					'rssimage'       => 1,
-					'rssitems'       => 3,
-					'rssitemdesc'    => 1,
-					'word_count'     => 0,
-					'layout'         => '_:default',
-					'cache'          => 1,
-					'cache_time'     => 900,
-					'module_tag'     => 'div',
-					'bootstrap_size' => 0,
-					'header_tag'     => 'h3',
-					'style'          => 0,
+					'type'            => 'png',
+					'folder'          => 'images\/sampledata\/cassiopeia',
+					'link'            => '',
+					'width'           => 400,
+					'height'          => '',
+					'layout'          => '_:default',
+					'moduleclass_sfx' => '',
+					'style'           => '0',
+					'module_tag'      => 'div',
+					'bootstrap_size'  => '0',
+					'header_tag'      => 'h3',
+					'header_class'    => ''
 				),
 			),
 		);
