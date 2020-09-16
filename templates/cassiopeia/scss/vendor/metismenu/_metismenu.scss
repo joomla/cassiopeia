@@ -71,23 +71,18 @@
         box-shadow: none;
 
         &:after {
-          width: .5em;
-          height: .5em;
-          content: "";
-          justify-self: flex-end;
-          border-color: currentColor;
-          border-style: solid;
-          border-width: 0 1px 1px 0;
+          font-family: "Font Awesome 5 Free";
+          font-size: 1.7em;
+          content: "\f0d7";
           transition: all .3s ease-out;
-          transform: rotate(45deg);
 
           @at-root .mm-active > & {
-            transform: rotate(-135deg);
+            transform: rotate(-180deg);
           }
         }
 
         &[aria-expanded="true"]:after {
-          transform: rotate(-135deg);
+          transform: rotate(-180deg);
         }
       }
     }
