@@ -40,6 +40,26 @@ dd {
   padding-right: 0;
 }
 
+.metismenu.mod-menu .mm-toggler {
+  margin-right: .5em;
+  margin-left: 0;
+}
+
+.container-header {
+  background-image: $cassiopeia-header-grad-rtl;
+
+  .container-nav .container-search:only-child {
+    margin-right: auto;
+    margin-left: 0;
+  }
+
+  .mod-menu {
+    > li {
+      margin-left: 1.55em;
+    }
+  }
+}
+
 .mr-2 {
   margin-right: 0 !important;
   margin-left: .5rem;
@@ -95,4 +115,12 @@ dd {
 .btn-group > .btn:not(:first-child),
 .btn-group > .btn-group:not(:first-child) {
   @include border-right-radius(0);
+}
+
+.footer {
+  background-image: $cassiopeia-header-grad-rtl;
+  .back-top {
+    margin-right: auto;
+    margin-left: 0;
+  }
 }
