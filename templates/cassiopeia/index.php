@@ -197,7 +197,7 @@ $stickyFooter = $this->params->get('stickyFooter') ? ' position-sticky sticky-bo
 	<?php endif; ?>
 
 	<?php if ($this->countModules('footer') || ($this->params->get('backTop') == 1)) : ?>
-	<footer class="container-footer footer full-width<?php echo $stickyFooter ? ' ' . $stickyFooter : null ; ?>">
+	<footer class="container-footer footer full-width<?php echo $stickyFooter; ?>">
 		<div class="grid-child">
 			<jdoc:include type="modules" name="footer" style="none" />
 			<?php if ($this->params->get('backTop') == 1) : ?>
