@@ -88,8 +88,7 @@ $wrapper = $this->params->get('fluidContainer') ? 'wrapper-fluid' : 'wrapper-sta
 
 $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 
-$stickyHeader = $this->params->get('stickyHeader') ? ' position-sticky sticky-top' : '';
-$stickyFooter = $this->params->get('stickyFooter') ? ' position-sticky sticky-bottom' : '';
+$stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top' : '';
 
 ?>
 <!DOCTYPE html>
@@ -110,7 +109,7 @@ $stickyFooter = $this->params->get('stickyFooter') ? ' position-sticky sticky-bo
 	. $hasClass;
 	echo ($this->direction == 'rtl' ? ' rtl' : '');
 ?>">
-	<header class="header container-header full-width<?php echo $stickyHeader; ?>">
+	<header class="header container-header full-width <?php echo $stickyHeader; ?>">
 		<div class="grid-child">
 			<div class="navbar-brand">
 				<a href="<?php echo $this->baseurl; ?>/">
@@ -197,7 +196,7 @@ $stickyFooter = $this->params->get('stickyFooter') ? ' position-sticky sticky-bo
 	<?php endif; ?>
 
 	<?php if ($this->countModules('footer') || ($this->params->get('backTop') == 1)) : ?>
-	<footer class="container-footer footer full-width<?php echo $stickyFooter ? ' ' . $stickyFooter : null ; ?>">
+	<footer class="container-footer footer full-width">
 		<div class="grid-child">
 			<jdoc:include type="modules" name="footer" style="none" />
 			<?php if ($this->params->get('backTop') == 1) : ?>
