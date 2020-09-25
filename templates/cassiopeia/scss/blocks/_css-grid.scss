@@ -99,6 +99,9 @@
 
 .container-sidebar-left {
   grid-area: side-l;
+  .sidebar-left:first-child {
+    margin-top: $cassiopeia-grid-gutter;
+  }
 }
 
 .container-sidebar-right {
@@ -134,25 +137,4 @@
 
 .system-debug {
   grid-area: debug;
-}
-
-.container-top-a,
-.container-top-b,
-.container-bottom-a,
-.container-bottom-b {
-  display: grid;
-  grid-gap: $cassiopeia-grid-gutter;
-  grid-template-columns: 1fr;
-
-  > * {
-    margin: 0;
-  }
-
-  @include media-breakpoint-up(sm) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @include media-breakpoint-up(md) {
-    grid-template-columns: repeat(auto-fit, minmax(24%, 1fr));
-  }
 }
