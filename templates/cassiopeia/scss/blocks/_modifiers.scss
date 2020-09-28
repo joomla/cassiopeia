@@ -263,6 +263,11 @@
 
 // Modules
 
+.tag {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .breadcrumb {
   background-color: hsla(0, 0%, 0%, .03);
 }
