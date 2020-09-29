@@ -279,7 +279,8 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 1,
 				'ordering' => 2,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'show_page_heading'      => '1',
+					'image_intro'            => 'images/sampledata/cassiopeia/rocket-1000.jpg',
 					'float_intro'            => 'left',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -294,7 +295,8 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 1,
 				'ordering' => 1,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'show_page_heading'      => '1',
+					'image_intro'            => 'images/sampledata/cassiopeia/rocket-1000.jpg',
 					'float_intro'            => 'right',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -309,7 +311,8 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 1,
 				'ordering' => 0,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'show_page_heading'      => '1',
+					'image_intro'            => 'images/sampledata/cassiopeia/rocket-1000.jpg',
 					'float_intro'            => 'left',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -323,13 +326,15 @@ class PlgSampledataBlog extends CMSPlugin
 				'catid'    => $catIds[0],
 				'featured' => 0,
 				'ordering' => 0,
+				'show_page_heading'      => '1',
 			),
 			array(
 				'catid'    => $catIds[2],
-				'featured' => 0,
-				'ordering' => 0,
+				'featured'   => 0,
+				'ordering'   => 0,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'show_page_heading'      => '1',
+					'image_intro'            =>  'images/sampledata/cassiopeia/blue-rocket-400.jpg',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -344,7 +349,8 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 0,
 				'ordering' => 0,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'show_page_heading'      => '1',
+					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-400.jpg',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -359,7 +365,8 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 0,
 				'ordering' => 0,
 				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
+					'show_page_heading'      => '1',
+					'image_intro'            =>  'images/sampledata/cassiopeia/blue-rocket-400.jpg',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -530,6 +537,8 @@ class PlgSampledataBlog extends CMSPlugin
 				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
 				'params'       => array(
 					'layout_type'             => 'blog',
+					'show-titles'             => 1,
+					'link-titles'             => 0,
 					'show_category_title'     => 0,
 					'num_leading_articles'    => 4,
 					'num_intro_articles'      => 0,
@@ -556,6 +565,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'link'         => 'index.php?option=com_content&view=article&id=' . $articleIds[0],
 				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
 				'params'       => array(
+					'show_title'          => 0,
 					'info_block_position' => 0,
 					'show_category'       => 0,
 					'link_category'       => 0,
@@ -575,6 +585,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'link'         => 'index.php?option=com_users&view=login',
 				'component_id' => ExtensionHelper::getExtensionRecord('com_users', 'component')->extension_id,
 				'params'       => array(
+					'show_title'             => 0,
 					'logindescription_show'  => 1,
 					'logoutdescription_show' => 1,
 					'menu_text'              => 1,
@@ -606,7 +617,7 @@ class PlgSampledataBlog extends CMSPlugin
 					'enable_category'   => 1,
 					'catid'             => $catids[0],
 					'menu_text'         => 1,
-					'show_page_heading' => 1,
+					'show_page_heading' => 0,
 					'secure'            => 0,
 				),
 			),
@@ -617,7 +628,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
 				'params'       => array(
 					'menu_text'         => 1,
-					'show_page_heading' => 1,
+					'show_page_heading' => 0,
 					'secure'            => 0,
 				),
 			),
@@ -718,7 +729,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'access'       => 6,
 				'params'       => array(
 					'menu_text'         => 1,
-					'show_page_heading' => 1,
+					'show_page_heading' => 0,
 					'secure'            => 0,
 				),
 			),
@@ -730,7 +741,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'component_id' => ExtensionHelper::getExtensionRecord('com_config', 'component')->extension_id,
 				'params'       => array(
 					'menu_text'         => 1,
-					'show_page_heading' => 1,
+					'show_page_heading' => 0,
 					'secure'            => 0,
 				),
 			),
@@ -743,6 +754,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
 				'params'       => array(
 					'layout_type'             => 'blog',
+					'link_titles'             => 0,
 					'show_category_title'     => 0,
 					'num_leading_articles'    => 1,
 					'num_intro_articles'      => 2,
@@ -759,7 +771,7 @@ class PlgSampledataBlog extends CMSPlugin
 					'show_hits'               => 0,
 					'show_feed_link'          => 0,
 					'menu_text'               => 1,
-					'show_page_heading'       => 1,
+					'show_page_heading'       => 0,
 					'secure'                  => 0,
 				),
 			),
@@ -781,26 +793,12 @@ class PlgSampledataBlog extends CMSPlugin
 				// Articles (menu header)
 				'menutype'     => $menuTypes[0],
 				'title'        => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MENUS_ITEM_13_TITLE'),
-				'link'         => 'index.php?option=com_content&view=category&layout=blog&id=' . $catids[2],
+				'type'         => 'heading',
+				'link'         => '',
+				'component_id' => 0,
 				'parent_id'    => $menuIdsLevel1[3],
-				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
 				'params'       => array(
-					'layout_type'             => 'blog',
-					'show_category_title'     => 0,
-					'num_leading_articles'    => 3,
-					'num_intro_articles'      => 0,
-					'num_links'               => 2,
-					'orderby_sec'             => 'front',
-					'order_date'              => 'published',
-					'blog_class_leading'      => 'boxed columns-3',
-					'blog_class'              => '',
-					'show_pagination'         => 2,
-					'show_pagination_results' => 1,
-					'show_category'           => 0,
-					'info_bloc_position'      => 0,
-					'show_publish_date'       => 0,
-					'show_hits'               => 0,
-					'show_feed_link'          => 0,
+					'layout_type'             => 'heading',
 					'menu_text'               => 1,
 					'show_page_heading'       => 1,
 					'secure'                  => 0,
@@ -1373,6 +1371,12 @@ class PlgSampledataBlog extends CMSPlugin
 			$menuItem['client_id']       = 0;
 			$menuItem['level']           = $level;
 			$menuItem['home']            = 0;
+
+			// Set pageheading = title to enforce h1 headings
+			if (isset($menuItem['show_page_heading']) && $menuItem['show_page_heading'])
+			{
+				$menuItem['page_heading'] = $menuItem['title'];
+			}
 
 			// Set browserNav to default if not set
 			if (!isset($menuItem['browserNav']))
