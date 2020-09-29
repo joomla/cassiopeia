@@ -771,7 +771,7 @@ class PlgSampledataBlog extends CMSPlugin
 					'show_hits'               => 0,
 					'show_feed_link'          => 0,
 					'menu_text'               => 1,
-					'show_page_heading'       => 0,
+					'show_page_heading'       => 1,
 					'secure'                  => 0,
 				),
 			),
