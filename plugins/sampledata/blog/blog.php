@@ -334,7 +334,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'ordering'   => 0,
 				'images'   => array(
 					'show_page_heading'      => '1',
-					'image_intro'            =>  'images/sampledata/cassiopeia/blue-rocket-400.jpg',
+					'image_intro'            => 'images/sampledata/cassiopeia/blue-rocket-400.jpg',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -350,7 +350,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'ordering' => 0,
 				'images'   => array(
 					'show_page_heading'      => '1',
-					'image_intro'            =>  'images/sampledata/cassiopeia/rocket-400.jpg',
+					'image_intro'            => 'images/sampledata/cassiopeia/rocket-400.jpg',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
@@ -366,7 +366,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'ordering' => 0,
 				'images'   => array(
 					'show_page_heading'      => '1',
-					'image_intro'            =>  'images/sampledata/cassiopeia/blue-rocket-400.jpg',
+					'image_intro'            => 'images/sampledata/cassiopeia/blue-rocket-400.jpg',
 					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
