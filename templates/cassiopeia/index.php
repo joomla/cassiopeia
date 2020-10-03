@@ -90,6 +90,8 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 
 $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top' : '';
 
+$scrollTop = $this->params->get('scrollTop', false) ? 'scroll scroll-top' : 'back-top';
+
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
@@ -200,7 +202,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 		<div class="grid-child">
 			<jdoc:include type="modules" name="footer" style="none" />
 			<?php if ($this->params->get('backTop') == 1) : ?>
-				<a href="#top" id="back-top" class="back-top">
+				<a href="#top" id="back-top" class="<?php echo $scrollTop; ?>">
 					<span class="fas fa-arrow-up" aria-hidden="true"></span>
 					<span class="sr-only"><?php echo Text::_('TPL_CASSIOPEIA_BACKTOTOP'); ?></span>
 				</a>

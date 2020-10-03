@@ -8,11 +8,11 @@
 
   .grid-child {
     padding: 2.5rem ($cassiopeia-grid-gutter/2);
-  }
+    }
 
   a {
     color: currentColor;
-  }
+    }
 
   .back-top {
     align-self: flex-end;
@@ -22,7 +22,7 @@
     color: var(--cassiopeia-color-primary);
     background: $white;
     border-radius: $border-radius;
-  }
+    }
 
   [dir=rtl] & {
     background-image: $cassiopeia-header-grad-rtl;
@@ -30,6 +30,28 @@
     .back-top {
       margin-right: auto;
       margin-left: 0;
+      }
+    }
+
+  // Scrolling back to top
+  .scroll {
+    position: fixed;
+    bottom: 1rem;
+    z-index: 99;
+    outline: none;
+    height: 40px;
+    padding: $cassiopeia-grid-gutter/2;
+    margin-left: auto;
+    color: var(--cassiopeia-color-primary);
+    background: $white;
+    border-radius: $border-radius;
+    cursor: pointer;
+    text-decoration: none;
+
+    &-top {
+      right: 1rem;
+      }
     }
   }
-}
+
+
