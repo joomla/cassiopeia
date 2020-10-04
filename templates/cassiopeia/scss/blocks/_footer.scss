@@ -14,7 +14,7 @@
     color: currentColor;
   }
 
-  .back-top {
+  .back-top-wrapper {
     align-self: flex-end;
     height: 40px;
     padding: $cassiopeia-grid-gutter/2;
@@ -27,14 +27,14 @@
   [dir=rtl] & {
     background-image: $cassiopeia-header-grad-rtl;
 
-    .back-top {
+    .back-top-wrapper {
       margin-right: auto;
       margin-left: 0;
     }
   }
 
   // Scrolling back to top
-  .scroll {
+  /*.scroll {
     position: fixed;
     bottom: 1rem;
     z-index: 99;
@@ -51,5 +51,32 @@
     &-top {
       right: 1rem;
     }
+  }
+   */
+
+  .scroll-top-wrapper {
+    position: absolute;
+    top: 100vh;
+    right: 1rem;
+    bottom: 0;
+    width: 40px;
+    pointer-events: none;
+  }
+
+  .scroll-top {
+    position: fixed;
+    position: sticky;
+    pointer-events: all;
+    top: calc(100vh - 3rem);
+    z-index: 99;
+    outline: none;
+    height: 40px;
+    padding: $cassiopeia-grid-gutter/2;
+    margin-left: auto;
+    color: var(--cassiopeia-color-primary);
+    background: $white;
+    border-radius: $border-radius;
+    cursor: pointer;
+    text-decoration: none;
   }
 }

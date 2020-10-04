@@ -109,3 +109,7 @@ meter {
     @include border-right-radius(0);
   }
 }
+
+body {
+  position: relative;
+}
