@@ -204,7 +204,7 @@ $scrollTop = $this->params->get('scrollTop', false) ? 'scroll-top' : 'back-top';
 			<?php if ($this->params->get('backTop') == 1) : ?>
 				<div class="<?php echo $scrollTop; ?>-wrapper">
           <a href="#top" class="<?php echo $scrollTop; ?>">
-					  <span class="fas fa-arrow-up" aria-hidden="true"></span>
+					  <span class="fas fa-arrow-up fa-fw" aria-hidden="true"></span>
 					  <span class="sr-only"><?php echo Text::_('TPL_CASSIOPEIA_BACKTOTOP'); ?></span>
 				  </a>
         </div>
