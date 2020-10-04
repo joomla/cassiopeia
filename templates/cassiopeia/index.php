@@ -38,7 +38,7 @@ $wa->registerAndUseStyle($assetColorName, $templatePath . '/css/global/' . $para
 $this->getPreloadManager()->preload($wa->getAsset('style', $assetColorName)->getUri(), ['as' => 'style']);
 
 // Use a font scheme if not "None" is set in the template style options
-$paramsFontScheme = $this->params->get('useFontScheme', 'fonts-local_roboto');
+$paramsFontScheme = $this->params->get('useFontScheme', false);
 
 if ($paramsFontScheme)
 {
@@ -125,7 +125,7 @@ $scrollTop = $this->params->get('scrollTop', false) ? 'scroll-top' : 'back-top';
 		<?php if ($this->countModules('menu') || $this->countModules('search')) : ?>
 			<div class="grid-child container-nav">
 				<?php if ($this->countModules('menu')) : ?>
-					<nav class="navbar navbar-expand-lg">
+					<nav class="navbar navbar-expand-md">
 						<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="<?php echo Text::_('TPL_CASSIOPEIA_TOGGLE'); ?>">
 							<span class="fas fa-bars" aria-hidden="true"></span>
 						</button>
@@ -170,9 +170,9 @@ $scrollTop = $this->params->get('scrollTop', false) ? 'scroll-top' : 'back-top';
 	<?php endif; ?>
 
 	<div class="grid-child container-component">
+		<jdoc:include type="modules" name="breadcrumbs" style="none" />
 		<jdoc:include type="modules" name="main-top" style="card" />
 		<jdoc:include type="message" />
-		<jdoc:include type="modules" name="breadcrumbs" style="none" />
 		<main>
 		<jdoc:include type="component" />
 		</main>
