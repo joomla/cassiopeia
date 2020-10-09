@@ -38,7 +38,7 @@ $wa->registerAndUseStyle($assetColorName, $templatePath . '/css/global/' . $para
 $this->getPreloadManager()->preload($wa->getAsset('style', $assetColorName)->getUri(), ['as' => 'style']);
 
 // Use a font scheme if not "None" is set in the template style options
-$paramsFontScheme = $this->params->get('useFontScheme', 'fonts-local_roboto');
+$paramsFontScheme = $this->params->get('useFontScheme', false);
 
 if ($paramsFontScheme)
 {
@@ -123,7 +123,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 		<?php if ($this->countModules('menu') || $this->countModules('search')) : ?>
 			<div class="grid-child container-nav">
 				<?php if ($this->countModules('menu')) : ?>
-					<nav class="navbar navbar-expand-lg">
+					<nav class="navbar navbar-expand-md">
 						<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="<?php echo Text::_('TPL_CASSIOPEIA_TOGGLE'); ?>">
 							<span class="fas fa-bars" aria-hidden="true"></span>
 						</button>
@@ -195,18 +195,20 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	</div>
 	<?php endif; ?>
 
-	<?php if ($this->countModules('footer') || ($this->params->get('backTop') == 1)) : ?>
+	<?php if ($this->countModules('footer')) : ?>
 	<footer class="container-footer footer full-width">
 		<div class="grid-child">
 			<jdoc:include type="modules" name="footer" style="none" />
-			<?php if ($this->params->get('backTop') == 1) : ?>
-				<a href="#top" id="back-top" class="back-top">
-					<span class="fas fa-arrow-up" aria-hidden="true"></span>
-					<span class="sr-only"><?php echo Text::_('TPL_CASSIOPEIA_BACKTOTOP'); ?></span>
-				</a>
-			<?php endif; ?>
 		</div>
 	</footer>
+	<?php endif; ?>
+
+	<?php if ($this->params->get('backTop') == 1) : ?>
+		<div class="back-to-top-wrapper">
+			<a href="#top" class="back-to-top-link" aria-label="<?php echo Text::_('TPL_CASSIOPEIA_BACKTOTOP'); ?>">
+				<span class="fas fa-arrow-up fa-fw" aria-hidden="true"></span>
+			</a>
+		</div>
 	<?php endif; ?>
 
 	<jdoc:include type="modules" name="debug" style="none" />
