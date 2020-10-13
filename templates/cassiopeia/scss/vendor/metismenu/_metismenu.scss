@@ -72,6 +72,9 @@
             background-color: rgba(0,0,0,.03);
             box-shadow: none;
           }
+          [dir="rtl"] & > ul {
+            padding: 0 1em 0 0;
+          }
         }
       }
 
@@ -128,6 +131,9 @@
           top: 0;
           padding: 0 0 0 1em;
           box-shadow: none;
+        }
+        [dir="rtl"] & > ul {
+          padding: 0 1em 0 0;
         }
       }
     }
