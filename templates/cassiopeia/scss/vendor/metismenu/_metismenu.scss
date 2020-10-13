@@ -59,6 +59,19 @@
         &:not(.mm-show) {
           display: none;
         }
+
+        > li.parent {
+          display: block;
+          .mm-toggler {
+            display: inline-flex;
+          }
+          > ul {
+            position: relative;
+            top: 0;
+            padding: 0 0 0 1em;
+            box-shadow: none;
+          }
+        }
       }
 
       .mm-toggler {
@@ -92,6 +105,27 @@
 
         &[aria-expanded="true"]:after {
           transform: rotate(-180deg);
+        }
+      }
+    }
+  }
+
+  .sidebar-right,
+  .sidebar-left {
+    .metismenu {
+      .mm-collapse {
+        position: relative;
+      }
+      li.parent {
+        display: block;
+        .mm-toggler {
+          display: inline-flex;
+        }
+        > ul {
+          position: relative;
+          top: 0;
+          padding: 0 0 0 1em;
+          box-shadow: none;
         }
       }
     }
