@@ -66,11 +66,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 1.5em;
-        height: 1.5em;
-        padding: 0;
-        margin-left: .5em;
         color: currentColor;
+        cursor: pointer;
         user-select: none;
         background: none;
         border: none;
@@ -79,6 +76,7 @@
         &:after {
           width: 0;
           height: 0;
+          margin-left: .5em;
           content: "";
           border-top: 10px solid currentColor;
           border-right: 10px solid transparent;

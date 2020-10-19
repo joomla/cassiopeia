@@ -15,13 +15,7 @@ use Joomla\Utilities\ArrayHelper;
 $attributes          = [];
 $attributes['title'] = $item->anchor_title ? $item->anchor_title : null;
 $attributes['class'] = 'mod-menu__heading nav-header';
-$attributes['class'] .= $item->anchor_css ? $item->anchor_css : null;
-
-if ($item->deeper)
-{
-	$attributes['aria-haspopup'] = 'true';
-	$attributes['aria-expanded'] = 'false';
-}
+$attributes['class'] .= $item->anchor_css ? ' ' . $item->anchor_css : null;
 
 $linktype = $item->title;
 
@@ -41,5 +35,14 @@ if ($item->menu_image)
 	}
 }
 
-?>
-<span <?php echo ArrayHelper::toString($attributes); ?>><?php echo $linktype; ?></span>
+if ($item->deeper)
+{
+	$attributes['class'] .= ' mm-collapsed mm-toggler';
+	$attributes['aria-haspopup'] = 'true';
+	$attributes['aria-expanded'] = 'false';
+	echo '<button ' . ArrayHelper::toString($attributes) . '>' . $linktype . '</button>';
+}
+else
+{
+	echo '<span ' . ArrayHelper::toString($attributes) . '>' . $linktype . '</span>';
+}

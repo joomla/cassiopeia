@@ -41,8 +41,10 @@ dd {
 }
 
 .metismenu.mod-menu .mm-toggler {
-  margin-right: .5em;
-  margin-left: 0;
+  &:after {
+    margin-right: .5em;
+    margin-left: 0;
+  }
 }
 
 .container-header {

@@ -11,6 +11,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Filter\OutputFilter;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
 
 $attributes = [];
 
@@ -71,3 +72,8 @@ elseif ($item->browserNav == 2)
 }
 
 echo HTMLHelper::link(OutputFilter::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), $linktype, $attributes);
+
+if ($item->deeper)
+{
+	echo '<button class="mm-collapsed mm-toggler" aria-expanded="false"><span class="sr-only">' . Text::_('JGLOBAL_TOGGLE_DROPDOWN') . '</span></button>';
+}
