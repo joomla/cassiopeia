@@ -469,22 +469,26 @@ class PlgSampledataBlog extends CMSPlugin
 
 		// Create Articles.
 		$articles     = array(
+
+			// Category 1 = Help
 			array(
+				// Article 0 - About
 				'catid'    => $catIds[1],
-				'featured' => 0,
 				'ordering' => 2,
 				'state'    => 1,
 			),
 			array(
+				// Article 1 - Working on Your Site
 				'catid'    => $catIds[1],
-				'featured' => 0,
 				'ordering' => 1,
 				'access'   => 3,
 				'state'    => 1,
 			),
+
+			// Category 0 = Blog
 			array(
+				// Article 2 - Welcome to your blog
 				'catid'    => $catIds[0],
-				'featured' => 1,
 				'ordering' => 2,
 				'state'    => 0,
 				'images'   => array(
@@ -500,8 +504,8 @@ class PlgSampledataBlog extends CMSPlugin
 				)
 			),
 			array(
+				// Article 3 - About your home page
 				'catid'    => $catIds[0],
-				'featured' => 1,
 				'ordering' => 1,
 				'state'    => 0,
 				'images'   => array(
@@ -517,8 +521,8 @@ class PlgSampledataBlog extends CMSPlugin
 				)
 			),
 			array(
+				// Article 4 - Your Modules
 				'catid'    => $catIds[0],
-				'featured' => 1,
 				'ordering' => 0,
 				'state'    => 0,
 				'images'   => array(
@@ -534,16 +538,19 @@ class PlgSampledataBlog extends CMSPlugin
 				)
 			),
 			array(
+				// Article 5 - Your Template
 				'catid'    => $catIds[0],
 				'featured' => 0,
 				'ordering' => 0,
 				'show_page_heading'      => '1',
 			),
+
+			// Category 2 = Joomla - marketing texts
 			array(
+				// Article 6 - Millions
 				'catid'    => $catIds[2],
-				'featured' => 0,
 				'ordering' => 0,
-				'state'    => 0,
+				'state'    => 1,
 				'images'   => array(
 					'show_page_heading'      => '1',
 					'image_intro'            => 'images/sampledata/cassiopeia/blue-rocket-400.jpg',
@@ -557,10 +564,10 @@ class PlgSampledataBlog extends CMSPlugin
 				)
 			),
 			array(
+				// Article 7 - Love
 				'catid'    => $catIds[2],
-				'featured' => 0,
 				'ordering' => 0,
-				'state'    => 0,
+				'state'    => 1,
 				'images'   => array(
 					'show_page_heading'      => '1',
 					'image_intro'            => 'images/sampledata/cassiopeia/rocket-400.jpg',
@@ -574,10 +581,10 @@ class PlgSampledataBlog extends CMSPlugin
 				)
 			),
 			array(
+				// Article 8 - Joomla
 				'catid'    => $catIds[2],
-				'featured' => 0,
 				'ordering' => 0,
-				'state'    => 0,
+				'state'    => 1,
 				'images'   => array(
 					'show_page_heading'      => '1',
 					'image_intro'            => 'images/sampledata/cassiopeia/blue-rocket-400.jpg',
@@ -1102,7 +1109,6 @@ class PlgSampledataBlog extends CMSPlugin
 
 			return $response;
 		}
-
 		$response            = array();
 		$response['success'] = true;
 		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP2_SUCCESS');
@@ -1149,8 +1155,8 @@ class PlgSampledataBlog extends CMSPlugin
 		$catids = $this->app->getUserState('sampledata.blog.articles.catids');
 
 		$modules = array(
-			// The main menu Blog
 			array(
+				// The main menu Blog
 				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_0_TITLE'),
 				'ordering'  => 1,
 				'position'  => 'menu',
@@ -1197,6 +1203,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Syndication
 				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_2_TITLE'),
 				'ordering'  => 6,
 				'position'  => 'sidebar-right',
@@ -1212,6 +1219,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Archived Articles
 				'title'    => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_3_TITLE'),
 				'ordering' => 4,
 				'position' => 'sidebar-right',
@@ -1226,6 +1234,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Latest Posts
 				'title'      => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_4_TITLE'),
 				'ordering'   => 6,
 				'position'   => 'top-a',
@@ -1262,6 +1271,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Older Posts (from category 0 = blog)
 				'title'    => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_5_TITLE'),
 				'ordering' => 2,
 				'position' => 'sidebar-right',
@@ -1308,6 +1318,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Bottom Menu
 				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_6_TITLE'),
 				'ordering'  => 1,
 				'position'  => 'footer',
@@ -1329,6 +1340,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Search
 				'title'    => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_7_TITLE'),
 				'ordering' => 1,
 				'position' => 'search',
@@ -1348,7 +1360,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
-				// Headder image
+				// Header image
 				'title'      => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_8_TITLE'),
 				'content'    => '<p>' . Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_8_CONTENT') . '</p>',
 				'ordering'   => 1,
@@ -1373,6 +1385,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Popular Tags ( but there are no tags )
 				'title'    => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_9_TITLE'),
 				'ordering' => 1,
 				'position' => 'sidebar-right',
@@ -1395,6 +1408,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Similiar Items
 				'title'    => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_10_TITLE'),
 				'ordering' => 0,
 				'position' => '',
@@ -1411,6 +1425,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Backend - Site Information
 				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_11_TITLE'),
 				'ordering'  => 4,
 				'position'  => 'cpanel',
@@ -1433,6 +1448,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
+				// Backend - Release News
 				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_12_TITLE'),
 				'ordering'  => 1,
 				'position'  => 'postinstall',
