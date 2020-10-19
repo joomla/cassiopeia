@@ -1450,7 +1450,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
-				// Backend - site Information
+				// Backend - Release News
 				'title'     => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_12_TITLE'),
 				'ordering'  => 1,
 				'position'  => 'postinstall',
