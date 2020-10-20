@@ -540,9 +540,8 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 5 - Your Template
 				'catid'    => $catIds[0],
-				'featured' => 0,
 				'ordering' => 0,
-				'show_page_heading'      => '1',
+				'state'    => 0,
 			),
 
 			// Category 2 = Joomla - marketing texts
