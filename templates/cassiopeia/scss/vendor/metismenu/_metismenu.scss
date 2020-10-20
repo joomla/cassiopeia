@@ -3,7 +3,6 @@
     &.mod-menu {
       .metismenu-item {
         display: flex;
-        padding: $cassiopeia-grid-gutter/2 0;
         font-size: 1.1rem;
         line-height: 1.5;
 
@@ -35,10 +34,39 @@
         > span,
         > a {
           flex: 1 0 0%;
+          padding: $cassiopeia-grid-gutter/2 0;
           overflow: hidden;
           text-decoration: none;
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+
+        > a::after {
+
+          @include media-breakpoint-up(md) {
+            position: absolute;
+            right: 50%;
+            bottom: 0;
+            left: 50%;
+            display: block;
+            height: 2px;
+            margin: auto;
+            content: "";
+            background: transparent;
+            opacity: .2;
+            transition: all .2s ease, background-color .2s ease;
+          }
+        }
+
+        > a:hover::after,
+        &.active > a::after {
+          right: 2px;
+          left: 0;
+          background: $white;
+        }
+
+        &::after {
+          content: none;
         }
       }
 
@@ -83,6 +111,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 0;
         color: currentColor;
         user-select: none;
         background: none;
@@ -114,6 +143,9 @@
   .sidebar-right,
   .sidebar-left {
     .metismenu {
+      li > a:hover {
+        text-decoration: underline;
+      }
       .mm-collapse {
         position: relative;
         background-color: rgba(0,0,0,.03);
