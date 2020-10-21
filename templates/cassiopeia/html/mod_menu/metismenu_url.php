@@ -11,7 +11,6 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Filter\OutputFilter;
 use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
 
 $attributes = [];
 
@@ -28,12 +27,6 @@ if ($item->anchor_css)
 if ($item->anchor_rel)
 {
 	$attributes['rel'] = $item->anchor_rel;
-}
-
-if ($item->deeper)
-{
-	$attributes['aria-haspopup'] = 'true';
-	$attributes['aria-expanded'] = 'false';
 }
 
 $linktype = $item->title;
@@ -75,5 +68,5 @@ echo HTMLHelper::link(OutputFilter::ampReplace(htmlspecialchars($item->flink, EN
 
 if ($item->deeper)
 {
-	echo '<button class="mm-collapsed mm-toggler" aria-expanded="false"><span class="sr-only">' . Text::_('JGLOBAL_TOGGLE_DROPDOWN') . '</span></button>';
+	echo '<button class="mm-collapsed mm-toggler" aria-haspopup="true" aria-expanded="false" aria-label="' . $item->title . '"></button>';
 }
