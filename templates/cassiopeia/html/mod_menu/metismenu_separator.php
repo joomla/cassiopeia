@@ -12,8 +12,13 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\Utilities\ArrayHelper;
 
-$attributes          = [];
-$attributes['title'] = $item->anchor_title ? $item->anchor_title : null;
+$attributes = [];
+
+if ($item->anchor_title)
+{
+	$attributes['title'] = $item->anchor_title;
+}
+
 $attributes['class'] = 'mod-menu__separator separator';
 $attributes['class'] .= $item->anchor_css ? ' ' . $item->anchor_css : null;
 
