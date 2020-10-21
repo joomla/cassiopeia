@@ -590,6 +590,13 @@ class PlgSampledataBlog extends CMSPlugin
 					'image_fulltext_caption' => ''
 				)
 			),
+			array(
+				// Article 9 - Workflows
+				'catid'    => $catIds[1],
+				'featured' => 1,
+				'ordering' => 0,
+				'state'    => 1,
+			),
 		);
 
 		$mvcFactory = $this->app->bootComponent('com_content')->getMVCFactory();
@@ -636,14 +643,14 @@ class PlgSampledataBlog extends CMSPlugin
 			$article['metakey']         = '';
 			$article['metadesc']        = '';
 
-			if (!isset($article['state']))
-			{
-				$article['state']  = 1;
-			}
-
 			if (!isset($article['featured']))
 			{
 				$article['featured']  = 0;
+			}
+
+			if (!isset($article['state']))
+			{
+				$article['state']  = 1;
 			}
 
 			if (!isset($article['images']))
@@ -669,6 +676,38 @@ class PlgSampledataBlog extends CMSPlugin
 			// Get ID from article we just added
 			$ids[] = $articleModel->getItem()->id;
 		}
+
+		// Set article 9 (workflows) to published
+		$query = $this->db->getQuery(true);
+
+		$query->update($this->db->quoteName('#__workflow_associations'))
+			->set($this->db->quoteName('stage_id') . '= :stageId')
+			->where($this->db->quoteName('item_id') . ' = :itemId')
+			->where($this->db->quoteName('extension') . ' = ' . $this->db->quote('com_content'))
+			->bind(':stageId', $stages[Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_WORKFLOW_STAGE6_TITLE')], ParameterType::INTEGER)
+			->bind(':itemId', $ids[9], ParameterType::INTEGER);
+
+		$this->db->setQuery($query)->execute();
+
+		// Article 9 must be added to the content_frontpage table
+		$query = $this->db->getQuery(true);
+
+		$query->delete($this->db->quoteName('#__content_frontpage'))
+			->where($this->db->quoteName('content_id') . ' = :contentId')
+			->bind(':contentId', $ids[9], ParameterType::INTEGER);
+
+		$this->db->setQuery($query)->execute();
+
+		$query = $this->db->getQuery(true);
+
+		$featuredItem = (object) [
+			'content_id'      => $ids[9],
+			'ordering'        => 0,
+			'featured_up'     => null,
+			'featured_down'   => null
+		];
+
+		$this->db->insertObject('#__content_frontpage', $featuredItem);
 
 		$this->app->setUserState('sampledata.blog.articles', $ids);
 		$this->app->setUserState('sampledata.blog.articles.catids', $catIds);
