@@ -123,7 +123,7 @@ class PlgSampledataBlog extends CMSPlugin
 		$workflowTable = new \Joomla\Component\Workflow\Administrator\Table\WorkflowTable($this->db);
 
 		$workflowTable->default = 0;
-		$workflowTable->title = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_WORKFLOW_SAMPLE_TITLE');
+		$workflowTable->title = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_WORKFLOW_SAMPLE_TITLE') . $langSuffix;
 		$workflowTable->description = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_WORKFLOW_SAMPLE_DESCRIPTION');
 		$workflowTable->published = 1;
 		$workflowTable->access = $access;
@@ -156,7 +156,7 @@ class PlgSampledataBlog extends CMSPlugin
 			$stageTable->id = 0;
 			$stageTable->published = 1;
 			$stageTable->ordering = 0;
-			$stageTable->default = $i == 1 ? 1 : 0;
+			$stageTable->default = $i == 6 ? 1 : 0;
 			$stageTable->workflow_id = $workflowId;
 
 			if (!$stageTable->store())
@@ -474,23 +474,18 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 0 - About
 				'catid'    => $catIds[1],
-				'ordering' => 2,
-				'state'    => 1,
 			),
 			array(
 				// Article 1 - Working on Your Site
 				'catid'    => $catIds[1],
-				'ordering' => 1,
 				'access'   => 3,
-				'state'    => 1,
 			),
 
 			// Category 0 = Blog
 			array(
 				// Article 2 - Welcome to your blog
 				'catid'    => $catIds[0],
-				'ordering' => 2,
-				'state'    => 0,
+				'featured' => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
 					'float_intro'            => 'left',
@@ -505,8 +500,7 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 3 - About your home page
 				'catid'    => $catIds[0],
-				'ordering' => 1,
-				'state'    => 0,
+				'featured' => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
 					'float_intro'            => 'right',
@@ -521,8 +515,7 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 4 - Your Modules
 				'catid'    => $catIds[0],
-				'ordering' => 0,
-				'state'    => 0,
+				'featured' => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
 					'float_intro'            => 'left',
@@ -537,16 +530,13 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 5 - Your Template
 				'catid'    => $catIds[0],
-				'ordering' => 0,
-				'state'    => 0,
+				'featured' => 1,
 			),
 
 			// Category 2 = Joomla - marketing texts
 			array(
 				// Article 6 - Millions
 				'catid'    => $catIds[2],
-				'ordering' => 0,
-				'state'    => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
 					'float_intro'            => '',
@@ -561,8 +551,6 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 7 - Love
 				'catid'    => $catIds[2],
-				'ordering' => 0,
-				'state'    => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
 					'float_intro'            => '',
@@ -577,8 +565,6 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 8 - Joomla
 				'catid'    => $catIds[2],
-				'ordering' => 0,
-				'state'    => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
 					'float_intro'            => '',
@@ -592,10 +578,8 @@ class PlgSampledataBlog extends CMSPlugin
 			),
 			array(
 				// Article 9 - Workflows
-				'catid'    => $catIds[1],
+				'catid'    => $catIds[0],
 				'featured' => 1,
-				'ordering' => 0,
-				'state'    => 1,
 			),
 		);
 
@@ -625,10 +609,13 @@ class PlgSampledataBlog extends CMSPlugin
 			$article['introtext'] = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_' . $i . '_INTROTEXT');
 			$article['fulltext']  = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_' . $i . '_FULLTEXT');
 
+
 			// Set values which are always the same.
-			$article['id']              = 0;
-			$article['created_user_id'] = $user->id;
-			$article['alias']           = ApplicationHelper::stringURLSafe($article['title']);
+			$article['id']               = 0;
+			$article['ordering']         = 0;
+			$article['created_user_id']  = $user->id;
+			$article['created_by_alias'] = 'Joomla';
+			$article['alias']            = ApplicationHelper::stringURLSafe($article['title']);
 
 			// Set unicodeslugs if alias is empty
 			if (trim(str_replace('-', '', $alias) == ''))
@@ -675,39 +662,22 @@ class PlgSampledataBlog extends CMSPlugin
 
 			// Get ID from article we just added
 			$ids[] = $articleModel->getItem()->id;
+
+			if ($article['featured'])
+			{
+				// Set the article featured in #__content_frontpage)
+				$query = $this->db->getQuery(true);
+
+				$featuredItem = (object) [
+					'content_id'      => $articleModel->getItem()->id,
+					'ordering'        => 0,
+					'featured_up'     => null,
+					'featured_down'   => null
+				];
+
+				$this->db->insertObject('#__content_frontpage', $featuredItem);
+			}
 		}
-
-		// Set article 9 (workflows) to published
-		$query = $this->db->getQuery(true);
-
-		$query->update($this->db->quoteName('#__workflow_associations'))
-			->set($this->db->quoteName('stage_id') . '= :stageId')
-			->where($this->db->quoteName('item_id') . ' = :itemId')
-			->where($this->db->quoteName('extension') . ' = ' . $this->db->quote('com_content'))
-			->bind(':stageId', $stages[Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_WORKFLOW_STAGE6_TITLE')], ParameterType::INTEGER)
-			->bind(':itemId', $ids[9], ParameterType::INTEGER);
-
-		$this->db->setQuery($query)->execute();
-
-		// Article 9 must be added to the content_frontpage table
-		$query = $this->db->getQuery(true);
-
-		$query->delete($this->db->quoteName('#__content_frontpage'))
-			->where($this->db->quoteName('content_id') . ' = :contentId')
-			->bind(':contentId', $ids[9], ParameterType::INTEGER);
-
-		$this->db->setQuery($query)->execute();
-
-		$query = $this->db->getQuery(true);
-
-		$featuredItem = (object) [
-			'content_id'      => $ids[9],
-			'ordering'        => 0,
-			'featured_up'     => null,
-			'featured_down'   => null
-		];
-
-		$this->db->insertObject('#__content_frontpage', $featuredItem);
 
 		$this->app->setUserState('sampledata.blog.articles', $ids);
 		$this->app->setUserState('sampledata.blog.articles.catids', $catIds);
