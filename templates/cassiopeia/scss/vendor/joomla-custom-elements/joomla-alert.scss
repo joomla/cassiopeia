@@ -4,6 +4,7 @@
 // The following is a restyle for the system alerts
 #system-message-container {
   &:empty {
+    display: none;
     margin-top: 0;
   }
 }
