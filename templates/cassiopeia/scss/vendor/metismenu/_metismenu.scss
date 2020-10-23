@@ -1,6 +1,34 @@
 @if $metismenu==true {
   .metismenu {
     &.mod-menu {
+      > li {
+        > a::after,
+        > button::before {
+
+          @include media-breakpoint-up(md) {
+            position: absolute;
+            right: 50%;
+            bottom: 0;
+            left: 50%;
+            display: block;
+            height: 2px;
+            margin: auto;
+            content: "";
+            background: transparent;
+            opacity: .2;
+            transition: all .2s ease, background-color .2s ease;
+          }
+        }
+
+        > a:hover::after,
+        > button:hover::before,
+        &.active > a::after,
+        &.active > button::before {
+          right: 2px;
+          left: 0;
+          background: $white;
+        }
+      }
       .metismenu-item {
         display: flex;
         font-size: 1.1rem;
@@ -46,33 +74,6 @@
           outline-offset: 2px;
         }
 
-        > a::after,
-        > button::before {
-
-          @include media-breakpoint-up(md) {
-            position: absolute;
-            right: 50%;
-            bottom: 0;
-            left: 50%;
-            display: block;
-            height: 2px;
-            margin: auto;
-            content: "";
-            background: transparent;
-            opacity: .2;
-            transition: all .2s ease, background-color .2s ease;
-          }
-        }
-
-        > a:hover::after,
-        > button:hover::before,
-        &.active > a::after,
-        &.active > button::before {
-          right: 2px;
-          left: 0;
-          background: $white;
-        }
-
         &::after {
           content: none;
         }
@@ -95,9 +96,13 @@
         &:not(.mm-show) {
           display: none;
         }
-
-        > li.parent {
+        > li {
           display: block;
+          > a {
+            display: inline-flex;
+          }
+        }
+        > li.parent {
           .mm-toggler {
             display: inline-flex;
           }
