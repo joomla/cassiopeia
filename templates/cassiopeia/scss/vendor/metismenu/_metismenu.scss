@@ -40,7 +40,14 @@
           white-space: nowrap;
         }
 
-        > a::after {
+        > a:focus,
+        > button:focus {
+          outline: 1px dotted $gray-400;
+          outline-offset: 2px;
+        }
+
+        > a::after,
+        > button::before {
 
           @include media-breakpoint-up(md) {
             position: absolute;
@@ -58,7 +65,9 @@
         }
 
         > a:hover::after,
-        &.active > a::after {
+        > button:hover::before,
+        &.active > a::after,
+        &.active > button::before {
           right: 2px;
           left: 0;
           background: $white;
@@ -120,7 +129,7 @@
         &:after {
           width: 0;
           height: 0;
-          margin-left: .5em;
+          margin: .5em;
           content: "";
           border-top: 10px solid currentColor;
           border-right: 10px solid transparent;
@@ -142,7 +151,8 @@
   .sidebar-right,
   .sidebar-left {
     .metismenu {
-      li > a:hover {
+      li > a:hover,
+      li > button:hover {
         text-decoration: underline;
       }
       .mm-collapse {
