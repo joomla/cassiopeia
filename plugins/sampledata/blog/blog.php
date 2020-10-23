@@ -503,7 +503,6 @@ class PlgSampledataBlog extends CMSPlugin
 				'featured' => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
-					'float_intro'            => 'right',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
 					'image_fulltext'         => '',
@@ -515,14 +514,11 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 4 - Your Modules
 				'catid'    => $catIds[0],
-				'featured' => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
-					'float_intro'            => 'left',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
 					'image_fulltext'         => '',
-					'float_fulltext'         => '',
 					'image_fulltext_alt'     => '',
 					'image_fulltext_caption' => ''
 				)
@@ -531,6 +527,14 @@ class PlgSampledataBlog extends CMSPlugin
 				// Article 5 - Your Template
 				'catid'    => $catIds[0],
 				'featured' => 1,
+				'images'   => array(
+					'image_intro'            =>  'images/banners/banner.jpg',
+					'image_intro_alt'        => '',
+					'image_intro_caption'    => '',
+					'image_fulltext'         => '',
+					'image_fulltext_alt'     => '',
+					'image_fulltext_caption' => ''
+				)
 			),
 
 			// Category 2 = Joomla - marketing texts
@@ -539,7 +543,6 @@ class PlgSampledataBlog extends CMSPlugin
 				'catid'    => $catIds[2],
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
-					'float_intro'            => '',
 					'image_intro_alt'        => '',
 					'image_intro_caption'    => '',
 					'image_fulltext'         => '',
@@ -580,6 +583,14 @@ class PlgSampledataBlog extends CMSPlugin
 				// Article 9 - Workflows
 				'catid'    => $catIds[0],
 				'featured' => 1,
+				'images'   => array(
+					'image_intro'            =>  'images/banners/banner.jpg',
+					'image_intro_alt'        => '',
+					'image_intro_caption'    => '',
+					'image_fulltext'         => '',
+					'image_fulltext_alt'     => '',
+					'image_fulltext_caption' => ''
+				)
 			),
 		);
 
@@ -665,7 +676,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 			if ($article['featured'])
 			{
-				// Set the article featured in #__content_frontpage)
+				// Set the article featured in #__content_frontpage
 				$query = $this->db->getQuery(true);
 
 				$featuredItem = (object) [
@@ -781,8 +792,8 @@ class PlgSampledataBlog extends CMSPlugin
 				'params'       => array(
 					'layout_type'             => 'blog',
 					'show_category_title'     => 0,
-					'num_leading_articles'    => 4,
-					'num_intro_articles'      => 0,
+					'num_leading_articles'    => 0,
+					'num_intro_articles'      => 4,
 					'num_links'               => 2,
 					'orderby_sec'             => 'rdate',
 					'order_date'              => 'published',
