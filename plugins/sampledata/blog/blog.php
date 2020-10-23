@@ -514,6 +514,7 @@ class PlgSampledataBlog extends CMSPlugin
 			array(
 				// Article 4 - Your Modules
 				'catid'    => $catIds[0],
+				'featured' => 1,
 				'images'   => array(
 					'image_intro'            =>  'images/banners/banner.jpg',
 					'image_intro_alt'        => '',
@@ -581,16 +582,7 @@ class PlgSampledataBlog extends CMSPlugin
 			),
 			array(
 				// Article 9 - Workflows
-				'catid'    => $catIds[0],
-				'featured' => 1,
-				'images'   => array(
-					'image_intro'            =>  'images/banners/banner.jpg',
-					'image_intro_alt'        => '',
-					'image_intro_caption'    => '',
-					'image_fulltext'         => '',
-					'image_fulltext_alt'     => '',
-					'image_fulltext_caption' => ''
-				)
+				'catid'    => $catIds[1],
 			),
 		);
 
@@ -1110,6 +1102,17 @@ class PlgSampledataBlog extends CMSPlugin
 				'menutype'     => $menuTypes[0],
 				'title'        => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_8_TITLE'),
 				'link'         => 'index.php?option=com_content&view=article&id=' . (int) $articleIds[8],
+				'parent_id'    => $menuIdsLevel2[4],
+				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
+				'params'       => array(
+					'menu_show' => 1,
+					'secure'    => 0,
+				),
+			),
+			array(
+				'menutype'     => $menuTypes[0],
+				'title'        => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_9_TITLE'),
+				'link'         => 'index.php?option=com_content&view=article&id=' . (int) $articleIds[9],
 				'parent_id'    => $menuIdsLevel2[4],
 				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
 				'params'       => array(
