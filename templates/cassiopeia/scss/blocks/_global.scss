@@ -55,7 +55,7 @@ a {
   }
 }
 
-.com-content__filter {
+.btn-group {
   margin-bottom: $cassiopeia-grid-gutter;
   > .input-group-append {
     > .btn-primary {
@@ -75,7 +75,7 @@ a {
   }
 }
 
-[dir="rtl"] .com-content__filter {
+[dir="rtl"] .btn-group {
   > .input-group-append {
     > .btn-primary {
       @include border-left-radius($border-radius);
