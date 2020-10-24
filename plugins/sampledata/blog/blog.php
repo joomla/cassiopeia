@@ -9,7 +9,6 @@
 
 defined('_JEXEC') or die;
 
-use FG\ASN1\OID;
 use Joomla\CMS\Application\ApplicationHelper;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Extension\ExtensionHelper;
@@ -20,7 +19,6 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Session\Session;
 use Joomla\Database\ParameterType;
-use phpDocumentor\Reflection\Types\Object_;
 
 /**
  * Sampledata - Blog Plugin
