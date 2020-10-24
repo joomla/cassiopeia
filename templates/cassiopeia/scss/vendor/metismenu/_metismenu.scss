@@ -101,6 +101,9 @@
           > a {
             display: inline-flex;
           }
+          > button:hover {
+            text-decoration: underline;
+          }
         }
         > li.parent {
           .mm-toggler {
