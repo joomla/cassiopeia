@@ -66,7 +66,7 @@ elseif ($item->browserNav == 2)
 
 echo HTMLHelper::link(OutputFilter::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), $linktype, $attributes);
 
-if ($item->deeper)
+if ($showAll && $item->deeper)
 {
 	echo '<button class="mm-collapsed mm-toggler" aria-haspopup="true" aria-expanded="false" aria-label="' . $item->title . '"></button>';
 }

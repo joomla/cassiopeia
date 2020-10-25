@@ -40,7 +40,7 @@ if ($item->menu_image)
 	}
 }
 
-if ($item->deeper)
+if ($showAll && $item->deeper)
 {
 	$attributes['class'] .= ' mm-collapsed mm-toggler';
 	$attributes['aria-haspopup'] = 'true';

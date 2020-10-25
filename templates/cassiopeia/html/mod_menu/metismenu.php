@@ -27,10 +27,18 @@ if ($tagId = $params->get('tag_id', ''))
 	$attributes['id'] = $tagId;
 }
 
+$start = (int) $params->get('startLevel', 1);
+
 ?>
 <ul <?php echo ArrayHelper::toString($attributes); ?>>
 <?php foreach ($list as $i => &$item)
 {
+	// Skip sub-menu items if they are set to be hidden in the module's options
+	if (!$showAll && $item->level > $start)
+	{
+		continue;
+	}
+
 	$itemParams = $item->getParams();
 	$class      = [];
 	$class[]    = 'metismenu-item item-' . $item->id;
@@ -68,14 +76,17 @@ if ($tagId = $params->get('tag_id', ''))
 		$class[] = 'divider';
 	}
 
-	if ($item->deeper)
+	if ($showAll)
 	{
-		$class[] = 'deeper';
-	}
+		if ($item->deeper)
+		{
+			$class[] = 'deeper';
+		}
 
-	if ($item->parent)
-	{
-		$class[] = 'parent';
+		if ($item->parent)
+		{
+			$class[] = 'parent';
+		}
 	}
 
 	echo '<li class="' . implode(' ', $class) . '">';
@@ -94,7 +105,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 	switch (true) :
 		// The next item is deeper.
-		case $item->deeper:
+		case $showAll && $item->deeper:
 			echo '<ul class="mm-collapse">';
 			break;
 
