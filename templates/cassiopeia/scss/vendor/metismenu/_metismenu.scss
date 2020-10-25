@@ -20,6 +20,13 @@
           }
         }
 
+        @include media-breakpoint-down(md) {
+          &.active > button,
+          > button:hover {
+            text-decoration: underline;
+          }
+        }
+
         > a:hover::after,
         > button:hover::before,
         &.active > a::after,
