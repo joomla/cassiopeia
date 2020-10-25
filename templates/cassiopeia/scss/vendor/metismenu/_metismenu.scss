@@ -156,6 +156,8 @@
   .sidebar-right,
   .sidebar-left {
     .metismenu {
+      li.active > a,
+      li.active > button,
       li > a:hover,
       li > button:hover {
         text-decoration: underline;
