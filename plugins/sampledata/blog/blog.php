@@ -741,6 +741,7 @@ class PlgSampledataBlog extends CMSPlugin
 					'menu_text'               => 1,
 					'menu_show'               => 1,
 					'show_page_heading'       => 1,
+					'secure'                  => 0,
 				),
 			),
 			array(
@@ -806,6 +807,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'access'       => 3,
 				'params'       => array(
 					'menu_text' => 1,
+					'secure'    => 0,
 				),
 			),
 			array(
@@ -1045,6 +1047,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 			return $response;
 		}
+
 		$response            = array();
 		$response['success'] = true;
 		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP2_SUCCESS');
