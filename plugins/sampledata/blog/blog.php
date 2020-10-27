@@ -119,6 +119,35 @@ class PlgSampledataBlog extends CMSPlugin
 		$language   = Multilanguage::isEnabled() ? Factory::getLanguage()->getTag() : '*';
 		$langSuffix = ($language !== '*') ? ' (' . $language . ')' : '';
 
+		// Create Field Group
+		$groupTable = new \Joomla\Component\Fields\Administrator\Table\GroupTable($this->db);
+
+		$groupTable->title           = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_FIELDS_GROUP_TITLE') . $langSuffix;
+		$groupTable->description     = '';
+		$groupTable->note            = '';
+		$groupTable->state           = 1;
+		$groupTable->ordering        = 0;
+		$groupTable->created         = Factory::getDate()->toSql();
+		$groupTable->created_by      = $user->id;
+		$groupTable->modified        = Factory::getDate()->toSql();
+		$groupTable->access          = $access;
+		$groupTable->language        = $language;
+		$groupTable->extension       = 'com_content.article';
+		$groupTable->params          = '{"display_readonly":"1"}';
+
+		if (!$groupTable->store())
+		{
+			Factory::getLanguage()->load('com_content');
+			$response            = array();
+			$response['success'] = false;
+			$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($groupTable->getError()));
+
+			return $response;
+		}
+
+		// Get ID of the group we just added
+		$groupId[] = $groupTable->id;
+
 		// Create workflow
 		$workflowTable = new \Joomla\Component\Workflow\Administrator\Table\WorkflowTable($this->db);
 
