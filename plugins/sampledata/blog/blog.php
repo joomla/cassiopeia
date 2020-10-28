@@ -526,7 +526,8 @@ class PlgSampledataBlog extends CMSPlugin
 					'float_fulltext'         => '',
 					'image_fulltext_alt'     => '',
 					'image_fulltext_caption' => ''
-				)
+				),
+				'authorValue' => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_3_FIELD_0'),
 			),
 			array(
 				// Article 4 - Your Modules
@@ -599,7 +600,8 @@ class PlgSampledataBlog extends CMSPlugin
 			),
 			array(
 				// Article 9 - Workflows
-				'catid'    => $catIds[1],
+				'catid'       => $catIds[1],
+				'authorValue' => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_9_FIELD_0'),
 			),
 		);
 
@@ -695,6 +697,21 @@ class PlgSampledataBlog extends CMSPlugin
 				];
 
 				$this->db->insertObject('#__content_frontpage', $featuredItem);
+			}
+
+			// Add a value to the custom field if a value is given
+			if (!empty($article['authorValue']))
+			{
+				// Store a field value
+				$query = $this->db->getQuery(true);
+
+				$valueAuthor = (object) [
+					'item_id'  => $articleModel->getItem()->id,
+					'field_id' => $fieldIds[0],
+					'value'    => $article['authorValue'],
+				];
+
+				$this->db->insertObject('#__fields_values', $valueAuthor);
 			}
 		}
 
