@@ -119,7 +119,7 @@ class PlgSampledataBlog extends CMSPlugin
 		$language   = Multilanguage::isEnabled() ? Factory::getLanguage()->getTag() : '*';
 		$langSuffix = ($language !== '*') ? ' (' . $language . ')' : '';
 
-		// Create Field Group
+		// Create Field Group for articles
 		$groupTable = new \Joomla\Component\Fields\Administrator\Table\GroupTable($this->db);
 
 		$groupTable->title           = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_FIELDS_GROUP_TITLE') . $langSuffix;
@@ -130,9 +130,10 @@ class PlgSampledataBlog extends CMSPlugin
 		$groupTable->created         = Factory::getDate()->toSql();
 		$groupTable->created_by      = $user->id;
 		$groupTable->modified        = Factory::getDate()->toSql();
+		$groupTable->modified_by     = $user->id;
 		$groupTable->access          = $access;
 		$groupTable->language        = $language;
-		$groupTable->extension       = 'com_content.article';
+		$groupTable->context         = 'com_content.article';
 		$groupTable->params          = '{"display_readonly":"1"}';
 
 		if (!$groupTable->store())
@@ -145,8 +146,7 @@ class PlgSampledataBlog extends CMSPlugin
 			return $response;
 		}
 
-		// Get ID of the group we just added
-		$groupId[] = $groupTable->id;
+		$groupId = $groupTable->id;
 
 		// Create workflow
 		$workflowTable = new \Joomla\Component\Workflow\Administrator\Table\WorkflowTable($this->db);
@@ -623,6 +623,9 @@ class PlgSampledataBlog extends CMSPlugin
 				$this->db->insertObject('#__content_frontpage', $featuredItem);
 			}
 		}
+
+		// Get ID of the group we just added
+		$groupId[] = $groupTable->id;
 
 		$this->app->setUserState('sampledata.blog.articles', $ids);
 		$this->app->setUserState('sampledata.blog.articles.catids', $catIds);
