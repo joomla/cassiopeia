@@ -122,7 +122,7 @@ class PlgSampledataBlog extends CMSPlugin
 		// Create Field Group for articles
 		$groupTable = new \Joomla\Component\Fields\Administrator\Table\GroupTable($this->db);
 
-		$groupTable->title           = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_FIELDS_GROUP_TITLE') . $langSuffix;
+		$groupTable->title           = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_FIELDS_GROUP_TITLE') . $langSuffix;
 		$groupTable->description     = '';
 		$groupTable->note            = '';
 		$groupTable->state           = 1;
@@ -138,7 +138,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		if (!$groupTable->store())
 		{
-			Factory::getLanguage()->load('com_content');
+			Factory::getLanguage()->load('com_fields');
 			$response            = array();
 			$response['success'] = false;
 			$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($groupTable->getError()));
@@ -147,6 +147,79 @@ class PlgSampledataBlog extends CMSPlugin
 		}
 
 		$groupId = $groupTable->id;
+
+		// Add fields
+		$mvcFactory = $this->app->bootComponent('com_fields')->getMVCFactory();
+
+		$fieldIds = [];
+
+		$articleFields = [
+			[
+				'type'   => 'textarea',
+				'params' => [
+					'rows'      => 3,
+					'cols'      => 80,
+					'maxlength' => 400,
+					'filter'    => ''
+				]
+			],
+		];
+
+		foreach ($articleFields as $i => $cf)
+		{
+			$fieldModel = $mvcFactory->createModel('Field', 'Administrator', ['ignore_request' => true]);
+
+			// Set values from language strings.
+			$cfTitle                = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_FIELDS_FIELD_' . $i . '_TITLE') . $langSuffix;
+
+			$cf['id']               = 0;
+			$cf['name']             = $cfTitle;
+			$cf['label']            = ApplicationHelper::stringURLSafe($cfTitle);
+			$cf['title']            = $cfTitle;
+			$cf['description']      = '';
+			$cf['note']             = '';
+			$cf['default_value']    = '';
+			$cf['group_id']         = $groupId;
+			$cf['ordering']         = 0;
+			$cf['state']            = 1;
+			$cf['language']         = $language;
+			$cf['access']           = $access;
+			$cf['context']          = 'com_content.article';
+			$cf['fieldparams']       = [
+				'hint'               => '',
+				'class'              => '',
+				'label_class'        => '',
+				'show_on'            => '',
+				'render_class'       => '',
+				'showlabel'          => '1',
+				'label_render_class' => '',
+				'display'            => '3',
+				'prefix'             => '',
+				'suffix'             => '',
+				'layout'             => '',
+				'display_readonly'   => '1'
+			];
+
+			try
+			{
+				if (!$fieldModel->save($cf))
+				{
+					throw new Exception($fieldModel->getError());
+				}
+			}
+			catch (Exception $e)
+			{
+				Factory::getLanguage()->load('com_fields');
+				$response            = array();
+				$response['success'] = false;
+				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, $e->getMessage());
+
+				return $response;
+			}
+
+			// Get ID from the field we just added
+			$fieldIds[] = $fieldModel->getItem()->id;
+		}
 
 		// Create workflow
 		$workflowTable = new \Joomla\Component\Workflow\Administrator\Table\WorkflowTable($this->db);
@@ -161,7 +234,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		if (!$workflowTable->store())
 		{
-			Factory::getLanguage()->load('com_content');
+			Factory::getLanguage()->load('com_workflow');
 			$response            = array();
 			$response['success'] = false;
 			$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($stageTable->getError()));
@@ -190,7 +263,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 			if (!$stageTable->store())
 			{
-				Factory::getLanguage()->load('com_content');
+				Factory::getLanguage()->load('com_workflow');
 				$response            = array();
 				$response['success'] = false;
 				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($stageTable->getError()));
@@ -343,7 +416,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 			if (!$trTable->store())
 			{
-				Factory::getLanguage()->load('com_content');
+				Factory::getLanguage()->load('com_workflow');
 				$response            = array();
 				$response['success'] = false;
 				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($trTable->getError()));
@@ -399,6 +472,7 @@ class PlgSampledataBlog extends CMSPlugin
 			}
 			catch (Exception $e)
 			{
+				Factory::getLanguage()->load('com_content');
 				$response            = array();
 				$response['success'] = false;
 				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, $e->getMessage());
@@ -623,9 +697,6 @@ class PlgSampledataBlog extends CMSPlugin
 				$this->db->insertObject('#__content_frontpage', $featuredItem);
 			}
 		}
-
-		// Get ID of the group we just added
-		$groupId[] = $groupTable->id;
 
 		$this->app->setUserState('sampledata.blog.articles', $ids);
 		$this->app->setUserState('sampledata.blog.articles.catids', $catIds);
