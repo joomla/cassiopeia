@@ -156,7 +156,7 @@ class PlgSampledataBlog extends CMSPlugin
 		$articleFields = [
 			[
 				'type'   => 'textarea',
-				'params' => [
+				'fieldparams' => [
 					'rows'      => 3,
 					'cols'      => 80,
 					'maxlength' => 400,
@@ -174,7 +174,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 			$cf['id']               = 0;
 			$cf['name']             = $cfTitle;
-			$cf['label']            = ApplicationHelper::stringURLSafe($cfTitle);
+			$cf['label']            = $cfTitle;
 			$cf['title']            = $cfTitle;
 			$cf['description']      = '';
 			$cf['note']             = '';
@@ -185,7 +185,7 @@ class PlgSampledataBlog extends CMSPlugin
 			$cf['language']         = $language;
 			$cf['access']           = $access;
 			$cf['context']          = 'com_content.article';
-			$cf['fieldparams']       = [
+			$cf['params']       = [
 				'hint'               => '',
 				'class'              => '',
 				'label_class'        => '',
@@ -197,7 +197,7 @@ class PlgSampledataBlog extends CMSPlugin
 				'prefix'             => '',
 				'suffix'             => '',
 				'layout'             => '',
-				'display_readonly'   => '1'
+				'display_readonly'   => '2'
 			];
 
 			try
