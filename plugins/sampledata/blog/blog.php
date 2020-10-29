@@ -224,7 +224,7 @@ class PlgSampledataBlog extends CMSPlugin
 			}
 		}
 
-		if (!ComponentHelper::isEnabled('com_workflow') || !Factory::getUser()->authorise('core.create', 'com_workflow'))
+		if (ComponentHelper::isEnabled('com_workflow') && Factory::getUser()->authorise('core.create', 'com_workflow'))
 		{
 			$this->app->bootComponent('com_workflow');
 
@@ -711,7 +711,7 @@ class PlgSampledataBlog extends CMSPlugin
 			}
 
 			// Add a value to the custom field if a value is given
-			if (!ComponentHelper::isEnabled('com_fields') || !Factory::getUser()->authorise('core.create', 'com_fields'))
+			if (ComponentHelper::isEnabled('com_fields') && Factory::getUser()->authorise('core.create', 'com_fields'))
 			{
 				if (!empty($article['authorValue']))
 				{
