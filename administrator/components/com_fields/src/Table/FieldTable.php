@@ -156,7 +156,7 @@ class FieldTable extends Table
 
 		if ($table->load(array('name' => $this->name)) && ($table->id != $this->id || $this->id == 0))
 		{
-			$this->setError(Text::_('COM_FIELDS_ERROR_UNIQUE_NAME'));
+			$this->setError(Text::_('JLIB_DATABASE_ERROR_FIELD_UNIQUE_NAME'));
 
 			return false;
 		}

@@ -113,7 +113,6 @@ class PlgSampledataBlog extends CMSPlugin
 		// Get some metadata.
 		$access = (int) $this->app->get('access', 1);
 		$user   = Factory::getUser();
-		$now    = Factory::getDate()->toSql();
 
 		// Detect language to be used.
 		$language   = Multilanguage::isEnabled() ? Factory::getLanguage()->getTag() : '*';
@@ -123,34 +122,40 @@ class PlgSampledataBlog extends CMSPlugin
 		{
 			$mvcFactory = $this->app->bootComponent('com_fields')->getMVCFactory();
 
-			// Create Field Group for articles
-			$groupTable = new \Joomla\Component\Fields\Administrator\Table\GroupTable($this->db);
+			$groupModel = $mvcFactory->createModel('Group', 'Administrator', ['ignore_request' => true]);
 
-			$groupTable->title           = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_FIELDS_GROUP_TITLE') . $langSuffix;
-			$groupTable->description     = '';
-			$groupTable->note            = '';
-			$groupTable->state           = 1;
-			$groupTable->ordering        = 0;
-			$groupTable->created         = $now;
-			$groupTable->created_by      = $user->id;
-			$groupTable->modified        = $now;
-			$groupTable->modified_by     = $user->id;
-			$groupTable->access          = $access;
-			$groupTable->language        = $language;
-			$groupTable->context         = 'com_content.article';
-			$groupTable->params          = '{"display_readonly":"1"}';
+			$group = [
+				'title'           => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_FIELDS_GROUP_TITLE') . $langSuffix,
+				'id'              => 0,
+				'published'       => 1,
+				'ordering'        => 0,
+				'note'            => '',
+				'state'           => 1,
+				'access'          => $access,
+				'created_user_id' => $user->id,
+				'context'         => 'com_content.article',
+				'description'     => '',
+				'language'        => $language,
+				'params'          => '{"display_readonly":"1"}',
+			];
 
-			if (!$groupTable->store())
+			try
 			{
-				Factory::getLanguage()->load('com_fields', JPATH_ADMINISTRATOR);
+				if (!$groupModel->save($group))
+				{
+					throw new Exception($groupModel->getError());
+				}
+			}
+			catch (Exception $e)
+			{
 				$response            = array();
 				$response['success'] = false;
-				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($groupTable->getError()));
+				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, $e->getMessage());
 
 				return $response;
 			}
 
-			$groupId = $groupTable->id;
+			$groupId = $groupModel->getItem()->id;
 
 			// Add fields
 			$fieldIds = [];
@@ -211,7 +216,6 @@ class PlgSampledataBlog extends CMSPlugin
 				}
 				catch (Exception $e)
 				{
-					Factory::getLanguage()->load('com_fields', JPATH_ADMINISTRATOR);
 					$response            = array();
 					$response['success'] = false;
 					$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, $e->getMessage());
@@ -241,7 +245,6 @@ class PlgSampledataBlog extends CMSPlugin
 
 			if (!$workflowTable->store())
 			{
-				Factory::getLanguage()->load('com_workflow', JPATH_ADMINISTRATOR);
 				$response            = array();
 				$response['success'] = false;
 				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($stageTable->getError()));
@@ -270,7 +273,6 @@ class PlgSampledataBlog extends CMSPlugin
 
 				if (!$stageTable->store())
 				{
-					Factory::getLanguage()->load('com_workflow', JPATH_ADMINISTRATOR);
 					$response            = array();
 					$response['success'] = false;
 					$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($stageTable->getError()));
@@ -423,7 +425,6 @@ class PlgSampledataBlog extends CMSPlugin
 
 				if (!$trTable->store())
 				{
-					Factory::getLanguage()->load('com_workflow', JPATH_ADMINISTRATOR);
 					$response            = array();
 					$response['success'] = false;
 					$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($trTable->getError()));
@@ -483,7 +484,6 @@ class PlgSampledataBlog extends CMSPlugin
 			}
 			catch (Exception $e)
 			{
-				Factory::getLanguage()->load('com_content');
 				$response            = array();
 				$response['success'] = false;
 				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, $e->getMessage());
@@ -684,7 +684,6 @@ class PlgSampledataBlog extends CMSPlugin
 
 			if (!$articleModel->save($article))
 			{
-				Factory::getLanguage()->load('com_content');
 				$response            = array();
 				$response['success'] = false;
 				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, Text::_($articleModel->getError()));
