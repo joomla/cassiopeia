@@ -82,20 +82,21 @@ class PlgSampledataBlog extends CMSPlugin
 		$data->title       = Text::_('PLG_SAMPLEDATA_BLOG_OVERVIEW_TITLE');
 		$data->description = Text::_('PLG_SAMPLEDATA_BLOG_OVERVIEW_DESC');
 		$data->icon        = 'wifi';
-		$data->steps       = 5;
+		$data->steps       = 4;
 
 		return $data;
 	}
+
 	/**
-	 * First step to enter the sampledata. Tags
+	 * First step to enter the sampledata. Content.
 	 *
 	 * @return  array or void  Will be converted into the JSON response to the module.
 	 *
-	 * @since  4.0.0
+	 * @since  3.8.0
 	 */
 	public function onAjaxSampledataApplyStep1()
 	{
-		if ($this->app->input->get('type') !== $this->_name)
+		if (!Session::checkToken('get') || $this->app->input->get('type') != $this->_name)
 		{
 			return;
 		}
@@ -109,34 +110,43 @@ class PlgSampledataBlog extends CMSPlugin
 			return $response;
 		}
 
-		/** @var \Joomla\Component\Tags\Administrator\Model\TagModel $model */
-		$model = $this->app->bootComponent('com_tags')->getMVCFactory()->createModel('Tag', 'Administrator', ['ignore_request' => true]);
+		// Get some metadata.
 		$access = (int) $this->app->get('access', 1);
 		$user   = Factory::getUser();
+
+		// Detect language to be used.
+		$language   = Multilanguage::isEnabled() ? Factory::getLanguage()->getTag() : '*';
+		$langSuffix = ($language !== '*') ? ' (' . $language . ')' : '';
+
+		/** @var \Joomla\Component\Tags\Administrator\Model\TagModel $model */
+		$modelTag = $this->app->bootComponent('com_tags')->getMVCFactory()->createModel('Tag', 'Administrator', ['ignore_request' => true]);
+
 		$tagIds = array();
 
 		// Create first three tags.
-		for ($i = 0; $i <= 2; $i++)
+		for ($i = 0; $i <= 3; $i++)
 		{
-			$title = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_TAG_' . $i . '_TITLE');
+			$title = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_TAG_' . $i . '_TITLE') . $langSuffix;
+
 			$tag   = array(
 				'id'              => 0,
 				'title'           => $title,
 				'alias'           => ApplicationHelper::stringURLSafe($title),
-				'parent_id'       => 1,
+				// Parent is root, except for the 4th tag. The 4th is child of the 3rd
+				'parent_id'       => $i === 3 ? $tagIds[2] : 1,
 				'published'       => 1,
 				'access'          => $access,
 				'created_user_id' => $user->id,
-				'language'        => '*',
+				'language'        => $language,
 				'description'     => '',
 			);
 
 			try
 			{
-				if (!$model->save($tag))
+				if (!$modelTag->save($tag))
 				{
 					Factory::getLanguage()->load('com_tags');
-					throw new Exception(Text::_($model->getError()));
+					throw new Exception(Text::_($modelTag->getError()));
 				}
 			}
 			catch (Exception $e)
@@ -148,64 +158,7 @@ class PlgSampledataBlog extends CMSPlugin
 				return $response;
 			}
 
-			$tagIds[] = $model->getState('tag.id');
-		}
-
-		// Create fourth tag as child of the third.
-		$title = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_TAG_3_TITLE');
-		$tag   = array(
-			'id'              => 0,
-			'title'           => $title,
-			'alias'           => ApplicationHelper::stringURLSafe($title),
-			'parent_id'       => $tagIds[2],
-			'published'       => 1,
-			'access'          => $access,
-			'created_user_id' => $user->id,
-			'language'        => '*',
-			'description'     => '',
-		);
-
-		try
-		{
-			if (!$model->save($tag))
-			{
-				Factory::getLanguage()->load('com_tags');
-				throw new Exception(Text::_($model->getError()));
-			}
-		}
-		catch (Exception $e)
-		{
-			$response            = array();
-			$response['success'] = false;
-			$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 0, $e->getMessage());
-
-			return $response;
-		}
-
-		$tagIds[] = $model->getState('tag.id');
-
-		// Storing IDs in UserState for later usage.
-		$this->app->setUserState('sampledata.blog.tags', $tagIds);
-
-		$response            = array();
-		$response['success'] = true;
-		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP1_SUCCESS');
-
-		return $response;
-	}
-
-	/**
-	 * First step to enter the sampledata. Content.
-	 *
-	 * @return  array or void  Will be converted into the JSON response to the module.
-	 *
-	 * @since  3.8.0
-	 */
-	public function onAjaxSampledataApplyStep2()
-	{
-		if (!Session::checkToken('get') || $this->app->input->get('type') != $this->_name)
-		{
-			return;
+			$tagIds[] = $modelTag->getItem()->id;
 		}
 
 		if (!ComponentHelper::isEnabled('com_content') || !Factory::getUser()->authorise('core.create', 'com_content'))
@@ -217,16 +170,10 @@ class PlgSampledataBlog extends CMSPlugin
 			return $response;
 		}
 
-		// Get some metadata.
-		$access = (int) $this->app->get('access', 1);
-		$user   = Factory::getUser();
-
-		// Detect language to be used.
-		$language   = Multilanguage::isEnabled() ? Factory::getLanguage()->getTag() : '*';
-		$langSuffix = ($language !== '*') ? ' (' . $language . ')' : '';
-
 		if (ComponentHelper::isEnabled('com_fields') && $user->authorise('core.create', 'com_fields'))
 		{
+			Factory::getLanguage()->load('com_fields');
+
 			$mvcFactory = $this->app->bootComponent('com_fields')->getMVCFactory();
 
 			$groupModel = $mvcFactory->createModel('Group', 'Administrator', ['ignore_request' => true]);
@@ -279,10 +226,10 @@ class PlgSampledataBlog extends CMSPlugin
 				],
 			];
 
+			$fieldModel = $mvcFactory->createModel('Field', 'Administrator', ['ignore_request' => true]);
+
 			foreach ($articleFields as $i => $cf)
 			{
-				$fieldModel = $mvcFactory->createModel('Field', 'Administrator', ['ignore_request' => true]);
-
 				// Set values from language strings.
 				$cfTitle                = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_FIELDS_FIELD_' . $i . '_TITLE') . $langSuffix;
 
@@ -586,6 +533,7 @@ class PlgSampledataBlog extends CMSPlugin
 			{
 				if (!$categoryModel->save($category))
 				{
+					Factory::getLanguage()->load('com_categories');
 					throw new Exception($categoryModel->getError());
 				}
 			}
@@ -601,9 +549,6 @@ class PlgSampledataBlog extends CMSPlugin
 			// Get ID from category we just added
 			$catIds[] = $categoryModel->getItem()->id;
 		}
-
-		// TagIds from step1
-		$tagIds = $this->app->getUserState('sampledata.blog.tags');
 
 		// Create Articles.
 		$articles = array(
@@ -731,6 +676,7 @@ class PlgSampledataBlog extends CMSPlugin
 		);
 
 		$mvcFactory = $this->app->bootComponent('com_content')->getMVCFactory();
+		$articleModel = $mvcFactory->createModel('Article', 'Administrator', ['ignore_request' => true]);
 
 		// Set com_workflow enabled for com_content
 		$params = ComponentHelper::getParams('com_content');
@@ -747,8 +693,6 @@ class PlgSampledataBlog extends CMSPlugin
 		// Store the articles
 		foreach ($articles as $i => $article)
 		{
-			$articleModel = $mvcFactory->createModel('Article', 'Administrator', ['ignore_request' => true]);
-
 			// Set values from language strings.
 			$title                = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_' . $i . '_TITLE');
 			$alias                = ApplicationHelper::stringURLSafe($title);
@@ -847,7 +791,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		$response          = new stdClass;
 		$response->success = true;
-		$response->message = Text::_('PLG_SAMPLEDATA_BLOG_STEP2_SUCCESS');
+		$response->message = Text::_('PLG_SAMPLEDATA_BLOG_STEP1_SUCCESS');
 
 		return $response;
 	}
@@ -859,7 +803,7 @@ class PlgSampledataBlog extends CMSPlugin
 	 *
 	 * @since  3.8.0
 	 */
-	public function onAjaxSampledataApplyStep3()
+	public function onAjaxSampledataApplyStep2()
 	{
 		if (!Session::checkToken('get') || $this->app->input->get('type') != $this->_name)
 		{
@@ -903,6 +847,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 				if (!$menuTable->check())
 				{
+					Factory::getLanguage()->load('com_menu');
 					throw new Exception($menuTable->getError());
 				}
 
@@ -1296,7 +1241,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		$response            = array();
 		$response['success'] = true;
-		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP3_SUCCESS');
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP2_SUCCESS');
 
 		return $response;
 	}
@@ -1308,7 +1253,7 @@ class PlgSampledataBlog extends CMSPlugin
 	 *
 	 * @since  3.8.0
 	 */
-	public function onAjaxSampledataApplyStep4()
+	public function onAjaxSampledataApplyStep3()
 	{
 		$app = Factory::getApplication();
 
@@ -1580,7 +1525,7 @@ class PlgSampledataBlog extends CMSPlugin
 					'timeframe'       => 'alltime',
 					'order_value'     => 'count',
 					'order_direction' => 1,
-					'display_count'   => 0,
+					'display_count'   => 1,
 					'no_results_text' => 0,
 					'minsize'         => 1,
 					'maxsize'         => 2,
@@ -1730,7 +1675,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		$response            = array();
 		$response['success'] = true;
-		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP4_SUCCESS');
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP3_SUCCESS');
 
 		return $response;
 	}
@@ -1742,7 +1687,7 @@ class PlgSampledataBlog extends CMSPlugin
 	 *
 	 * @since  4.0.0
 	 */
-	public function onAjaxSampledataApplyStep5()
+	public function onAjaxSampledataApplyStep4()
 	{
 		if ($this->app->input->get('type') != $this->_name)
 		{
@@ -1750,7 +1695,7 @@ class PlgSampledataBlog extends CMSPlugin
 		}
 
 		$response['success'] = true;
-		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP5_SUCCESS');
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP4_SUCCESS');
 
 		return $response;
 	}
