@@ -82,9 +82,116 @@ class PlgSampledataBlog extends CMSPlugin
 		$data->title       = Text::_('PLG_SAMPLEDATA_BLOG_OVERVIEW_TITLE');
 		$data->description = Text::_('PLG_SAMPLEDATA_BLOG_OVERVIEW_DESC');
 		$data->icon        = 'wifi';
-		$data->steps       = 4;
+		$data->steps       = 5;
 
 		return $data;
+	}
+	/**
+	 * First step to enter the sampledata. Tags
+	 *
+	 * @return  array or void  Will be converted into the JSON response to the module.
+	 *
+	 * @since  4.0.0
+	 */
+	public function onAjaxSampledataApplyStep1()
+	{
+		if ($this->app->input->get('type') !== $this->_name)
+		{
+			return;
+		}
+
+		if (!ComponentHelper::isEnabled('com_tags'))
+		{
+			$response            = array();
+			$response['success'] = true;
+			$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_SKIPPED', 1, 'com_tags');
+
+			return $response;
+		}
+
+		/** @var \Joomla\Component\Tags\Administrator\Model\TagModel $model */
+		$model = $this->app->bootComponent('com_tags')->getMVCFactory()->createModel('Tag', 'Administrator', ['ignore_request' => true]);
+		$access = (int) $this->app->get('access', 1);
+		$user   = Factory::getUser();
+		$tagIds = array();
+
+		// Create first three tags.
+		for ($i = 0; $i <= 2; $i++)
+		{
+			$title = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_TAG_' . $i . '_TITLE');
+			$tag   = array(
+				'id'              => 0,
+				'title'           => $title,
+				'alias'           => ApplicationHelper::stringURLSafe($title),
+				'parent_id'       => 1,
+				'published'       => 1,
+				'access'          => $access,
+				'created_user_id' => $user->id,
+				'language'        => '*',
+				'description'     => '',
+			);
+
+			try
+			{
+				if (!$model->save($tag))
+				{
+					Factory::getLanguage()->load('com_tags');
+					throw new Exception(Text::_($model->getError()));
+				}
+			}
+			catch (Exception $e)
+			{
+				$response            = array();
+				$response['success'] = false;
+				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 1, $e->getMessage());
+
+				return $response;
+			}
+
+			$tagIds[] = $model->getState('tag.id');
+		}
+
+		// Create fourth tag as child of the third.
+		$title = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_TAG_3_TITLE');
+		$tag   = array(
+			'id'              => 0,
+			'title'           => $title,
+			'alias'           => ApplicationHelper::stringURLSafe($title),
+			'parent_id'       => $tagIds[2],
+			'published'       => 1,
+			'access'          => $access,
+			'created_user_id' => $user->id,
+			'language'        => '*',
+			'description'     => '',
+		);
+
+		try
+		{
+			if (!$model->save($tag))
+			{
+				Factory::getLanguage()->load('com_tags');
+				throw new Exception(Text::_($model->getError()));
+			}
+		}
+		catch (Exception $e)
+		{
+			$response            = array();
+			$response['success'] = false;
+			$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 0, $e->getMessage());
+
+			return $response;
+		}
+
+		$tagIds[] = $model->getState('tag.id');
+
+		// Storing IDs in UserState for later usage.
+		$this->app->setUserState('sampledata.blog.tags', $tagIds);
+
+		$response            = array();
+		$response['success'] = true;
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP1_SUCCESS');
+
+		return $response;
 	}
 
 	/**
@@ -94,7 +201,7 @@ class PlgSampledataBlog extends CMSPlugin
 	 *
 	 * @since  3.8.0
 	 */
-	public function onAjaxSampledataApplyStep1()
+	public function onAjaxSampledataApplyStep2()
 	{
 		if (!Session::checkToken('get') || $this->app->input->get('type') != $this->_name)
 		{
@@ -495,8 +602,11 @@ class PlgSampledataBlog extends CMSPlugin
 			$catIds[] = $categoryModel->getItem()->id;
 		}
 
+		// TagIds from step1
+		$tagIds = $this->app->getUserState('sampledata.blog.tags');
+
 		// Create Articles.
-		$articles     = array(
+		$articles = array(
 
 			// Category 1 = Help
 			array(
@@ -514,6 +624,7 @@ class PlgSampledataBlog extends CMSPlugin
 				// Article 2 - Welcome to your blog
 				'catid'    => $catIds[0],
 				'featured' => 1,
+				'tags'     => array_map('strval', $tagIds),
 				'images'   => array(
 					'image_intro'            => 'images/banners/banner.jpg',
 					'float_intro'            => 'left',
@@ -529,6 +640,7 @@ class PlgSampledataBlog extends CMSPlugin
 				// Article 3 - About your home page
 				'catid'    => $catIds[0],
 				'featured' => 1,
+				'tags'     => array_map('strval', $tagIds),
 				'images'   => array(
 					'image_intro'            => 'images/banners/banner.jpg',
 					'image_intro_alt'        => '',
@@ -544,6 +656,7 @@ class PlgSampledataBlog extends CMSPlugin
 				// Article 4 - Your Modules
 				'catid'    => $catIds[0],
 				'featured' => 1,
+				'tags'     => array_map('strval', $tagIds),
 				'images'   => array(
 					'image_intro'            => 'images/banners/banner.jpg',
 					'image_intro_alt'        => '',
@@ -557,6 +670,7 @@ class PlgSampledataBlog extends CMSPlugin
 				// Article 5 - Your Template
 				'catid'    => $catIds[0],
 				'featured' => 1,
+				'tags'     => array_map('strval', $tagIds),
 				'images'   => array(
 					'image_intro'            => 'images/banners/banner.jpg',
 					'image_intro_alt'        => '',
@@ -733,7 +847,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		$response          = new stdClass;
 		$response->success = true;
-		$response->message = Text::_('PLG_SAMPLEDATA_BLOG_STEP1_SUCCESS');
+		$response->message = Text::_('PLG_SAMPLEDATA_BLOG_STEP2_SUCCESS');
 
 		return $response;
 	}
@@ -745,7 +859,7 @@ class PlgSampledataBlog extends CMSPlugin
 	 *
 	 * @since  3.8.0
 	 */
-	public function onAjaxSampledataApplyStep2()
+	public function onAjaxSampledataApplyStep3()
 	{
 		if (!Session::checkToken('get') || $this->app->input->get('type') != $this->_name)
 		{
@@ -1182,7 +1296,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		$response            = array();
 		$response['success'] = true;
-		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP2_SUCCESS');
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP3_SUCCESS');
 
 		return $response;
 	}
@@ -1194,7 +1308,7 @@ class PlgSampledataBlog extends CMSPlugin
 	 *
 	 * @since  3.8.0
 	 */
-	public function onAjaxSampledataApplyStep3()
+	public function onAjaxSampledataApplyStep4()
 	{
 		$app = Factory::getApplication();
 
@@ -1345,7 +1459,7 @@ class PlgSampledataBlog extends CMSPlugin
 				// Older Posts (from category 0 = blog)
 				'title'    => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_5_TITLE'),
 				'ordering' => 2,
-				'position' => 'sidebar-right',
+				'position' => 'bottom-b',
 				'module'   => 'mod_articles_category',
 				'params'   => array(
 					'mode'                         => 'normal',
@@ -1383,7 +1497,7 @@ class PlgSampledataBlog extends CMSPlugin
 					'owncache'                     => 1,
 					'cache_time'                   => 900,
 					'module_tag'                   => 'div',
-					'bootstrap_size'               => 0,
+					'bootstrap_size'               => 4,
 					'header_tag'                   => 'h3',
 					'style'                        => 0,
 				),
@@ -1456,10 +1570,10 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
-				// Popular Tags ( but there are no tags )
+				// Popular Tags
 				'title'    => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MODULES_MODULE_9_TITLE'),
 				'ordering' => 1,
-				'position' => 'sidebar-right',
+				'position' => 'bottom-b',
 				'module'   => 'mod_tags_popular',
 				'params'   => array(
 					'maximum'         => 8,
@@ -1470,10 +1584,10 @@ class PlgSampledataBlog extends CMSPlugin
 					'no_results_text' => 0,
 					'minsize'         => 1,
 					'maxsize'         => 2,
-					'layout'          => '_:default',
+					'layout'          => '_:cloud',
 					'owncache'        => 1,
 					'module_tag'      => 'aside',
-					'bootstrap_size'  => 0,
+					'bootstrap_size'  => 4,
 					'header_tag'      => 'h3',
 					'style'           => 0,
 				),
@@ -1484,13 +1598,14 @@ class PlgSampledataBlog extends CMSPlugin
 				'ordering' => 0,
 				'position' => '',
 				'module'   => 'mod_tags_similar',
+				'position' => 'bottom-b',
 				'params'   => array(
 					'maximum'        => 5,
 					'matchtype'      => 'any',
 					'layout'         => '_:default',
 					'owncache'       => 1,
 					'module_tag'     => 'div',
-					'bootstrap_size' => 0,
+					'bootstrap_size' => 4,
 					'header_tag'     => 'h3',
 					'style'          => 0,
 				),
@@ -1615,7 +1730,7 @@ class PlgSampledataBlog extends CMSPlugin
 
 		$response            = array();
 		$response['success'] = true;
-		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP3_SUCCESS');
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP4_SUCCESS');
 
 		return $response;
 	}
@@ -1627,7 +1742,7 @@ class PlgSampledataBlog extends CMSPlugin
 	 *
 	 * @since  4.0.0
 	 */
-	public function onAjaxSampledataApplyStep4()
+	public function onAjaxSampledataApplyStep5()
 	{
 		if ($this->app->input->get('type') != $this->_name)
 		{
@@ -1635,7 +1750,7 @@ class PlgSampledataBlog extends CMSPlugin
 		}
 
 		$response['success'] = true;
-		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP4_SUCCESS');
+		$response['message'] = Text::_('PLG_SAMPLEDATA_BLOG_STEP5_SUCCESS');
 
 		return $response;
 	}
