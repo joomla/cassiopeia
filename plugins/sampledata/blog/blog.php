@@ -856,7 +856,6 @@ class PlgSampledataBlog extends CMSPlugin
 			}
 			catch (Exception $e)
 			{
-				Factory::getLanguage()->load('com_menus');
 				$response            = array();
 				$response['success'] = false;
 				$response['message'] = Text::sprintf('PLG_SAMPLEDATA_BLOG_STEP_FAILED', 2, $e->getMessage());
@@ -1136,7 +1135,7 @@ class PlgSampledataBlog extends CMSPlugin
 				// Category List
 				'menutype'     => $menuTypes[0],
 				'title'        => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_MENUS_ITEM_12_TITLE'),
-				'link'         => 'index.php?option=com_content&view=category&layout=list&id=' . $catids[0],
+				'link'         => 'index.php?option=com_content&view=category&id=' . $catids[0],
 				'parent_id'    => $menuIdsLevel1[3],
 				'component_id' => ExtensionHelper::getExtensionRecord('com_content', 'component')->extension_id,
 				'params'       => array(
