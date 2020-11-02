@@ -16,7 +16,7 @@ use Joomla\Utilities\ArrayHelper;
 
 /** @var WebAssetManager $wa */
 $wa = $app->getDocument()->getWebAssetManager();
-$wa->registerAndUseScript('metismenu', 'mod_menu/menu-metismenu.js', [], [], ['metismenujs']);
+$wa->registerAndUseScript('metismenu', 'mod_menu/menu-metismenu.min.js', [], [], ['metismenujs']);
 
 $attributes          = [];
 // The menu class is deprecated. Use mod-menu instead
@@ -96,11 +96,11 @@ $start = (int) $params->get('startLevel', 1);
 		case 'component':
 		case 'heading':
 		case 'url':
-			require ModuleHelper::getLayoutPath('mod_menu', 'metismenu_' . $item->type);
+			require ModuleHelper::getLayoutPath('mod_menu', 'dropdown-metismenu_' . $item->type);
 			break;
 
 		default:
-			require ModuleHelper::getLayoutPath('mod_menu', 'metismenu_url');
+			require ModuleHelper::getLayoutPath('mod_menu', 'dropdown-metismenu_url');
 	endswitch;
 
 	switch (true) :
