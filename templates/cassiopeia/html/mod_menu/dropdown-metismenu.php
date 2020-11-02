@@ -16,7 +16,7 @@ use Joomla\Utilities\ArrayHelper;
 
 /** @var WebAssetManager $wa */
 $wa = $app->getDocument()->getWebAssetManager();
-$wa->registerAndUseScript('metismenu', 'mod_menu/menu-metismenu.min.js', [], [], ['metismenujs']);
+$wa->registerAndUseScript('metismenu', 'media/templates/cassiopeia/js/mod_menu/menu-metismenu.min.js', [], [], ['metismenujs']);
 
 $attributes          = [];
 // The menu class is deprecated. Use mod-menu instead
