@@ -676,7 +676,6 @@ class PlgSampledataBlog extends CMSPlugin
 		);
 
 		$mvcFactory = $this->app->bootComponent('com_content')->getMVCFactory();
-		$articleModel = $mvcFactory->createModel('Article', 'Administrator', ['ignore_request' => true]);
 
 		// Set com_workflow enabled for com_content
 		$params = ComponentHelper::getParams('com_content');
@@ -693,6 +692,8 @@ class PlgSampledataBlog extends CMSPlugin
 		// Store the articles
 		foreach ($articles as $i => $article)
 		{
+			$articleModel = $mvcFactory->createModel('Article', 'Administrator', ['ignore_request' => true]);
+
 			// Set values from language strings.
 			$title                = Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_ARTICLE_' . $i . '_TITLE');
 			$alias                = ApplicationHelper::stringURLSafe($title);
@@ -901,7 +902,7 @@ class PlgSampledataBlog extends CMSPlugin
 				),
 			),
 			array(
-				// About
+				// Help
 				'menutype'     => $menuTypes[0],
 				'title'        => Text::_('PLG_SAMPLEDATA_BLOG_SAMPLEDATA_CONTENT_CATEGORY_1_TITLE'),
 				'link'         => 'index.php?option=com_content&view=category&layout=blog&id=' . $catids[1],
