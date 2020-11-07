@@ -20,7 +20,7 @@ $wa->registerAndUseScript('metismenu', 'media/templates/cassiopeia/js/mod_menu/m
 
 $attributes          = [];
 // The menu class is deprecated. Use mod-menu instead
-$attributes['class'] = 'mod-menu mod-menu_metismenu metismenu mod-list ' . $class_sfx;
+$attributes['class'] = 'mod-menu mod-menu_dropdown-metismenu metismenu mod-list ' . $class_sfx;
 
 if ($tagId = $params->get('tag_id', ''))
 {
