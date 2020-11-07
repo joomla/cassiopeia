@@ -96,11 +96,11 @@ $start = (int) $params->get('startLevel', 1);
 		case 'component':
 		case 'heading':
 		case 'url':
-			require ModuleHelper::getLayoutPath('mod_menu', 'metismenu_' . $item->type);
+			require ModuleHelper::getLayoutPath('mod_menu', 'dropdown-metismenu_' . $item->type);
 			break;
 
 		default:
-			require ModuleHelper::getLayoutPath('mod_menu', 'metismenu_url');
+			require ModuleHelper::getLayoutPath('mod_menu', 'dropdown-metismenu_url');
 	endswitch;
 
 	switch (true) :
