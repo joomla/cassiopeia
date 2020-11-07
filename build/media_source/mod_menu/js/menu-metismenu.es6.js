@@ -7,7 +7,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const allMenus = document.querySelectorAll('ul.mod-menu_metismenu');
+  const allMenus = document.querySelectorAll('ul.mod-menu_dropdown-metismenu');
 
   allMenus.forEach((menu) => {
     // eslint-disable-next-line no-new, no-undef
