@@ -6,7 +6,7 @@
  * @since       4.0
  */
 document.addEventListener('DOMContentLoaded', function () {
-  var allMenus = document.querySelectorAll('ul.mod-menu_metismenu');
+  var allMenus = document.querySelectorAll('ul.mod-menu_dropdown-metismenu');
   allMenus.forEach(function (menu) {
     // eslint-disable-next-line no-new, no-undef
     var mm = new MetisMenu(menu, {
