@@ -17,6 +17,7 @@ use Joomla\Utilities\ArrayHelper;
 /** @var WebAssetManager $wa */
 $wa = $app->getDocument()->getWebAssetManager();
 $wa->registerAndUseScript('metismenu', 'media/mod_menu/js/menu-metismenu.min.js', [], [], ['metismenujs']);
+$wa->registerAndUseStyle('metismenu', 'media/mod_menu/css/menu-metismenu.min.css');
 
 $attributes          = [];
 // The menu class is deprecated. Use mod-menu instead

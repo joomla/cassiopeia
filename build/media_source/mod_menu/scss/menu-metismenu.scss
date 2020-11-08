@@ -1,0 +1,59 @@
+.mod-menu_dropdown-metismenu {
+  display: flex;
+
+  li.parent {
+    > a {
+      display: inline-flex;
+    }
+
+    > ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .mm-collapsing {
+    height: 0;
+    overflow: hidden;
+    transition-timing-function: ease;
+    transition-duration: .35s;
+    transition-property: height, visibility;
+  }
+
+  .mm-collapse {
+    &:not(.mm-show) {
+      display: none;
+    }
+  }
+
+  .mm-toggler {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5em 0;
+    user-select: none;
+    background: none;
+    border: none;
+    box-shadow: none;
+
+    &:after {
+      width: 0;
+      height: 0;
+      margin: 0 .5em;
+      content: "";
+      border-top: 10px solid currentColor;
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+      transition: all .3s ease-out;
+
+      @at-root .mm-active > & {
+        transform: rotate(-180deg);
+      }
+    }
+
+    &[aria-expanded="true"]:after {
+      transform: rotate(-180deg);
+    }
+  }
+}
