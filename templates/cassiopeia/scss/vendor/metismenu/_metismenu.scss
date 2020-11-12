@@ -1,5 +1,75 @@
 @if $metismenu==true {
   .metismenu {
+    &.menu-horizontal {
+      flex: 1 0 100%;
+      padding: 0;
+      margin: 0;
+      color: $white;
+      list-style: none;
+
+      @include media-breakpoint-up(md) {
+        display: flex;
+        flex: 1 1 0%;
+        flex-direction: row;
+      }
+
+      > li {
+        position: relative;
+
+        @include media-breakpoint-up(md) {
+          + li {
+            margin-left: 1.55em;
+          }
+        }
+
+        > a,
+        > span {
+          position: relative;
+          color: currentColor;
+          text-decoration: none;
+        }
+
+        &::after {
+
+          @include media-breakpoint-up(md) {
+            position: absolute;
+            right: 50%;
+            bottom: 0;
+            left: 50%;
+            display: block;
+            height: 2px;
+            margin: auto;
+            content: "";
+            background: transparent;
+            opacity: .2;
+            transition: all .2s ease, background-color .2s ease;
+          }
+        }
+
+        &.active::after,
+        &:hover::after {
+          right: 2px;
+          left: 0;
+          background: $white;
+        }
+
+        @include media-breakpoint-down(sm) {
+          &.active > a,
+          &.active > span,
+          > a:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .parent {
+        > ul {
+          display: none;
+          color: var(--cassiopeia-color-primary);
+        }
+      }
+    }
+
     &.mod-menu {
       > li {
         > a::after,
@@ -36,6 +106,7 @@
           background: $white;
         }
       }
+
       .metismenu-item {
         display: flex;
         font-size: 1.1rem;
