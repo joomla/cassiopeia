@@ -167,18 +167,6 @@
         }
       }
 
-      &.level-1 {
-        &.active > a,
-        &.active > button,
-        > a:hover,
-        > button:hover {
-
-          @include media-breakpoint-up(md) {
-            text-decoration: none;
-          }
-        }
-      }
-
       > a:hover::after,
       > button:hover::before,
       &.active > a::after,
@@ -186,6 +174,18 @@
         right: 2px;
         left: 0;
         background: $white;
+      }
+    }
+
+    .metismenu > li.level-1 {
+      &.active > a,
+      &.active > button,
+      > a:hover,
+      > button:hover {
+
+        @include media-breakpoint-up(md) {
+          text-decoration: none;
+        }
       }
     }
   }
