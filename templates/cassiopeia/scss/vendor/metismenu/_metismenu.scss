@@ -20,13 +20,6 @@
             margin-left: 1.55em;
           }
         }
-
-        &.active > a,
-        &.active > button,
-        > a:hover,
-        > button:hover {
-          text-decoration: underline;
-        }
       }
     }
 
@@ -52,14 +45,6 @@
           @include media-breakpoint-down(md) {
             width: 100%;
           }
-          .active > a,
-          .active > button {
-            text-decoration: underline;
-          }
-
-          a:hover {
-            text-decoration: underline;
-          }
         }
         > span,
         > a {
@@ -74,6 +59,13 @@
         > button:focus {
           outline: 1px dotted $gray-400;
           outline-offset: 2px;
+        }
+
+        &.active > a,
+        &.active > button,
+        > a:hover,
+        > button:hover {
+          text-decoration: underline;
         }
 
         &::after {
@@ -102,9 +94,6 @@
           display: block;
           > a {
             display: inline-flex;
-          }
-          > button:hover {
-            text-decoration: underline;
           }
         }
         > li.parent {
@@ -158,12 +147,6 @@
   .sidebar-right,
   .sidebar-left {
     .metismenu {
-      li.active > a,
-      li.active > button,
-      li > a:hover,
-      li > button:hover {
-        text-decoration: underline;
-      }
       .mm-collapse {
         position: relative;
         background-color: rgba(0,0,0,.03);
