@@ -175,6 +175,12 @@
         left: 0;
         background: $white;
       }
+
+      > button.mm-toggler-link:hover::before,
+      &.active > button.mm-toggler-link::before {
+        right: 0;
+        left: .5em;
+      }
     }
 
     .metismenu > li.level-1 {
