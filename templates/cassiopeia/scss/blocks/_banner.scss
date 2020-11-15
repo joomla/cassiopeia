@@ -38,6 +38,10 @@
       }
     }
 
+    @include media-breakpoint-down(lg) {
+      height: auto;
+    }
+
     @media screen and (max-height: 740px) {
       height: 100vh;
     }
