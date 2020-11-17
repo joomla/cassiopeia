@@ -95,8 +95,8 @@
 
   &.is-highlighted {
     color: white;
-    background-color: #264f70;
-    border-color: #234867;
+    background-color: var(--info);
+    border-color: var(--info);
     opacity: .8;
   }
 }
