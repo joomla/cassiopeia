@@ -86,15 +86,15 @@
   }
 }
 .choices__list--multiple .choices__item {
-  border-radius: 5px;
   font-size: inherit;
   font-weight: 500;
-  background-color: var(--info);
-  border: 1px solid $white;;
   color: $white;
+  background-color: var(--info);
+  border: 1px solid $white;
+  border-radius: $border-radius;
 
   &.is-highlighted {
-    color: white;
+    color: $white;
     background-color: var(--info);
     border-color: var(--info);
     opacity: .8;
@@ -113,7 +113,7 @@
     margin-bottom: 0;
     margin-left: 8px;
     line-height: 1;
-    border-left: 1px solid #ffffff;
+    border-left: 1px solid $white;
     opacity: .75;
 
     &:hover,
