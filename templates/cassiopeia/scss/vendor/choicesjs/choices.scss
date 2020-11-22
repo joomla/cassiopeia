@@ -95,6 +95,7 @@
 
 .choices__list--multiple {
   .choices__item {
+    display: inline-flex;
     font-size: inherit;
     font-weight: 500;
     color: $white;
