@@ -19,6 +19,10 @@
   line-height: 1;
 }
 
+.choices__item {
+  position: relative;
+}
+
 // Fix close button
 .choices__button_joomla {
   position: relative;
@@ -48,21 +52,16 @@
 .choices[data-type*="select-one"] {
   .choices__button_joomla {
     position: absolute;
-    top: 50%;
     right: 0;
-    width: 20px;
-    height: 20px;
+    width: 1.25em;
+    height: 1.25em;
     padding: 0;
-    margin-top: -10px;
-    margin-right: 45px;
     border-radius: 10em;
     opacity: .5;
 
     [dir=rtl] & {
       right: auto;
       left: 0;
-      margin-right: 0;
-      margin-left: 45px;
     }
 
     &:hover,
@@ -80,30 +79,35 @@
   }
 
   .choices__inner {
-    padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-    background: url("../../../images/select-bg.svg") no-repeat right center / $custom-select-bg-size;
-    background-color: $custom-select-bg;
+    padding: $custom-select-padding-y $custom-select-indicator-padding $custom-select-padding-y $custom-select-padding-x;
+    background: $custom-select-bg url("../../../images/select-bg.svg") no-repeat right center / $custom-select-bg-size;
 
     [dir=rtl] & {
-      padding: $custom-select-padding-y $custom-select-padding-x $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding);
-      background: url("../../../images/select-bg-rtl.svg") no-repeat left center / $custom-select-bg-size;
-      background-color: $custom-select-bg;
+      padding: $custom-select-padding-y $custom-select-padding-x $custom-select-padding-y $custom-select-indicator-padding;
+      background: $custom-select-bg url("../../../images/select-bg-rtl.svg") no-repeat left center / $custom-select-bg-size;
     }
   }
 }
-.choices__list--multiple .choices__item {
-  font-size: inherit;
-  font-weight: 500;
-  color: $white;
-  background-color: var(--info);
-  border: 1px solid $white;
-  border-radius: $border-radius;
 
-  &.is-highlighted {
+.choices__list--single {
+  padding-right: .25em;
+}
+
+.choices__list--multiple {
+  .choices__item {
+    font-size: inherit;
+    font-weight: 500;
     color: $white;
     background-color: var(--info);
-    border-color: var(--info);
-    opacity: .8;
+    border: 1px solid $white;
+    border-radius: $border-radius;
+
+    &.is-highlighted {
+      color: $white;
+      background-color: var(--info);
+      border-color: var(--info);
+      opacity: .8;
+    }
   }
 }
 
@@ -112,12 +116,12 @@
   .choices__button_joomla {
     position: relative;
     display: inline-block;
-    width: 8px;
-    padding-left: 16px;
+    width: .5em;
+    padding-left: 1em;
     margin-top: 0;
-    margin-right: -4px;
+    margin-right: -.25em;
     margin-bottom: 0;
-    margin-left: 8px;
+    margin-left: .5em;
     line-height: 1;
     border-left: 1px solid $white;
     opacity: .75;
