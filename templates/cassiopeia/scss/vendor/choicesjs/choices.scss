@@ -13,6 +13,12 @@
   z-index: 10;
 }
 
+.choices__inner,
+.choices__input {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 // Fix close button
 .choices__button_joomla {
   position: relative;
