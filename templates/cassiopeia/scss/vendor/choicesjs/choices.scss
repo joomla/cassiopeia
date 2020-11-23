@@ -99,8 +99,9 @@
       position: relative;
       display: inline-block;
       width: .5em;
-      padding-left: 1em;
-      margin: 0 -1 * .25em 0 .5em;
+      padding-right: $input-btn-padding-y;
+      padding-left: $input-btn-padding-y;
+      margin: 0 -.25em 0 .5em;
       line-height: 1;
       border-left: 1px solid $white;
 
@@ -109,9 +110,9 @@
       }
 
       [dir=rtl] & {
-        padding-right: 1em;
-        padding-left: 0;
-        margin: 0 .5em 0 -1 * .25em;
+        padding-right: $input-btn-padding-y;
+        padding-left: $input-btn-padding-y;
+        margin: 0 .5em 0 -.25em;
         border-right: 1px solid $white;
         border-left: 0;
       }
@@ -164,6 +165,11 @@
       background-color: var(--info);
       border-color: var(--info);
       opacity: .8;
+    }
+
+    [dir=rtl] & {
+      margin-right: 0;
+      margin-left: .25 * $input-btn-padding-x;
     }
   }
 }
