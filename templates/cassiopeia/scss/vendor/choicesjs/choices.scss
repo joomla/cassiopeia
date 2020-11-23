@@ -8,22 +8,6 @@
 // Cassiopea Variables, Functions and Mixins
 @import "../../tools/tools";
 
-// Fix position
-.choices__list--dropdown {
-  z-index: 10;
-}
-
-.choices__inner,
-.choices__input {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.choices__item {
-  position: relative;
-}
-
-// Fix close button
 .choices__button_joomla {
   position: relative;
   text-indent: -9999px;
@@ -31,6 +15,7 @@
   background: none;
   border: 0;
   appearance: none;
+  opacity: .75;
 
   &::before {
     position: absolute;
@@ -38,8 +23,11 @@
     right: 0;
     bottom: 0;
     left: 0;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    line-height: 1.5;
     text-indent: 0;
     content: "\00d7";
   }
@@ -47,55 +35,101 @@
   &:focus {
     outline: none;
   }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
 }
 
-.choices[data-type*="select-one"] {
-  .choices__button_joomla {
-    position: absolute;
-    right: 0;
-    width: 1.25em;
-    height: 1.25em;
-    padding: 0;
-    border-radius: 10em;
-    opacity: .5;
-
-    [dir=rtl] & {
-      right: auto;
-      left: 0;
-    }
-
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 2px hsl(187, 100%, 42%);
-    }
-  }
-
-  &::after {
-    display: none;
-  }
+.choices {
+  font-size: 1rem;
+  line-height: 1.5;
 
   .choices__inner {
-    padding: $custom-select-padding-y $custom-select-indicator-padding $custom-select-padding-y $custom-select-padding-x;
-    background: $custom-select-bg url("../../../images/select-bg.svg") no-repeat right center / $custom-select-bg-size;
+    min-height: calc(1.5em + 1.2rem + 2px);
+  }
 
-    [dir=rtl] & {
-      padding: $custom-select-padding-y $custom-select-padding-x $custom-select-padding-y $custom-select-indicator-padding;
-      background: $custom-select-bg url("../../../images/select-bg-rtl.svg") no-repeat left center / $custom-select-bg-size;
+  &[data-type*="select-one"] {
+    .choices__inner {
+      padding: $input-btn-padding-y $custom-select-indicator-padding $input-btn-padding-y $input-btn-padding-x;
+      background: $custom-select-bg url("../../../images/select-bg.svg") no-repeat right center / $custom-select-bg-size;
+
+      [dir=rtl] & {
+        padding: $input-btn-padding-y $input-btn-padding-x $input-btn-padding-y $custom-select-indicator-padding;
+        background: $custom-select-bg url("../../../images/select-bg-rtl.svg") no-repeat left center / $custom-select-bg-size;
+      }
+    }
+
+    .choices__button_joomla {
+      position: absolute;
+      right: 0;
+      width: 1.25em;
+      height: 1.25em;
+      padding: 0;
+      border-radius: 10em;
+      opacity: .5;
+
+      [dir=rtl] & {
+        right: auto;
+        left: 0;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 2px hsl(187, 100%, 42%);
+      }
+    }
+
+    &::after {
+      display: none;
     }
   }
+
+  &[data-type*="select-multiple"],
+  &[data-type*="text"] {
+    .choices__inner {
+      padding: .375 * $input-btn-padding-y .25 * $input-btn-padding-x .125 * $input-btn-padding-y;
+    }
+
+    .choices__button_joomla {
+      position: relative;
+      display: inline-block;
+      width: .5em;
+      padding-left: 1em;
+      margin-top: 0;
+      margin-right: -.25em;
+      margin-bottom: 0;
+      margin-left: .5em;
+      line-height: 1;
+      border-left: 1px solid $white;
+
+      &::before {
+        color: $white;
+      }
+    }
+  }
+}
+
+.choices__inner,
+.choices__input {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.choices__item {
+  position: relative;
 }
 
 .choices__list--single {
-  padding-right: .25em;
+  padding: 0;
 }
 
 .choices__list--multiple {
   .choices__item {
     display: inline-flex;
+    padding: .5 * $input-btn-padding-y .5 * $input-btn-padding-x;
+    margin-right: .25 * $input-btn-padding-x;
+    margin-bottom: .125 * $input-btn-padding-y;
     font-size: inherit;
     font-weight: 500;
     color: $white;
@@ -112,30 +146,8 @@
   }
 }
 
-.choices[data-type*="select-multiple"],
-.choices[data-type*="text"] {
-  .choices__button_joomla {
-    position: relative;
-    display: inline-block;
-    width: .5em;
-    padding-left: 1em;
-    margin-top: 0;
-    margin-right: -.25em;
-    margin-bottom: 0;
-    margin-left: .5em;
-    line-height: 1;
-    border-left: 1px solid $white;
-    opacity: .75;
-
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
-
-    &::before {
-      color: $white;
-    }
-  }
+.choices__list--dropdown {
+  z-index: 10;
 }
 
 .choices__heading {
