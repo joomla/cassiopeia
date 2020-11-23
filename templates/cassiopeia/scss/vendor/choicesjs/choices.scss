@@ -89,6 +89,10 @@
   &[data-type*="text"] {
     .choices__inner {
       padding: .375 * $input-btn-padding-y .25 * $input-btn-padding-x .125 * $input-btn-padding-y;
+
+      [dir=rtl] & {
+        text-align: right;
+      }
     }
 
     .choices__button_joomla {
@@ -96,15 +100,20 @@
       display: inline-block;
       width: .5em;
       padding-left: 1em;
-      margin-top: 0;
-      margin-right: -.25em;
-      margin-bottom: 0;
-      margin-left: .5em;
+      margin: 0 -1 * .25em 0 .5em;
       line-height: 1;
       border-left: 1px solid $white;
 
       &::before {
         color: $white;
+      }
+
+      [dir=rtl] & {
+        padding-right: 1em;
+        padding-left: 0;
+        margin: 0 .5em 0 -1 * .25em;
+        border-right: 1px solid $white;
+        border-left: 0;
       }
     }
   }
@@ -122,6 +131,10 @@
 
 .choices__list--single {
   padding: 0;
+
+  [dir=rtl] & {
+    text-align: right;
+  }
 }
 
 .choices__list--multiple {
