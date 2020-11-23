@@ -150,6 +150,15 @@
     border: 1px solid $white;
     border-radius: $border-radius;
 
+    &[data-deletable] {
+      padding-right: .375rem;
+
+      [dir=rtl] & {
+        padding-right: .5 * $input-btn-padding-x;
+        padding-left: .375rem;
+      }
+    }
+
     &.is-highlighted {
       color: $white;
       background-color: var(--info);
