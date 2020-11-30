@@ -36,5 +36,6 @@ $scrollLength: 100vh;
   &:focus {
     color: var(--white, $white);
     background-color: var(--cassiopeia-color-hover);
+    border-color: var(--white, $white);
   }
 }
