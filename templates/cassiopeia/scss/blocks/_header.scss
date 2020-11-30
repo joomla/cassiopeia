@@ -107,7 +107,6 @@
       }
 
       &::after {
-
         @include media-breakpoint-up(md) {
           position: absolute;
           right: 50%;
