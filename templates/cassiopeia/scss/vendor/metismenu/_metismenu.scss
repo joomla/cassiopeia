@@ -32,6 +32,7 @@
         &.parent {
           position: relative;
         }
+
         > ul {
           position: absolute;
           top: 100%;
@@ -42,6 +43,7 @@
           list-style: none;
           box-shadow: 0 0 10px hsla(0, 0%, 0%, .1);
         }
+
         > span,
         > a {
           padding: $cassiopeia-grid-gutter/2 0;
@@ -96,8 +98,10 @@
         &:not(.mm-show) {
           display: none;
         }
+
         > li {
           display: block;
+
           > a {
             display: inline-flex;
           }
@@ -161,8 +165,10 @@
         position: relative;
         background-color: rgba(0, 0, 0, .03);
       }
+
       li.parent {
         display: block;
+
         .mm-toggler {
           display: inline-flex;
           text-align: left;
@@ -171,6 +177,7 @@
             text-align: right;
           }
         }
+
         > ul {
           position: relative;
           top: 0;
@@ -182,6 +189,7 @@
           }
         }
       }
+
       .metismenu-item {
         > span,
         > a {
