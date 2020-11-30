@@ -76,11 +76,11 @@
 					>
 					<option value="0">JNONE</option>
 					<group label="TPL_CASSIOPEIA_FONT_GROUP_LOCAL">
-						<option value="fonts-local_roboto">Roboto (local)</option>
+						<option value="fonts-local_roboto">Roboto 700 + 400 (local)</option>
 					</group>
 					<group label="TPL_CASSIOPEIA_FONT_GROUP_WEB">
-						<option value="fonts-web_fira-sans">Fira Sans (web)</option>
-						<option value="fonts-web_roboto+noto-sans">Roboto + Noto Sans (web)</option>
+						<option value="fonts-web_fira-sans">Fira Sans 700 + 400 (web)</option>
+						<option value="fonts-web_roboto+noto-sans">Roboto 400 + Noto Sans 400 (web)</option>
 					</group>
 				</field>
 
