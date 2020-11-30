@@ -149,12 +149,19 @@
           }
 
           @at-root .mm-active > & {
-            transform: rotate(-180deg);
+            transform: rotateX(-180deg);
           }
         }
 
         &[aria-expanded="true"]:after {
-          transform: rotate(-180deg);
+          transform: rotateX(-180deg);
+        }
+      }
+
+      &.mm-toggler-nolink {
+        &:after {
+          position: relative;
+          top: .125em;
         }
       }
     }
