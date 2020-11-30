@@ -105,19 +105,19 @@
           > a {
             display: inline-flex;
           }
+        }
 
-          &.parent {
-            .mm-toggler {
-              display: inline-flex;
-            }
+        > li.parent {
+          .mm-toggler {
+            display: inline-flex;
+          }
 
-            > ul {
-              position: relative;
-              top: 0;
-              padding: 0 1em;
-              background-color: hsla(0, 0%, 0%, .03);
-              box-shadow: none;
-            }
+          > ul {
+            position: relative;
+            top: 0;
+            padding: 0 1em;
+            background-color: hsla(0, 0%, 0%, .03);
+            box-shadow: none;
           }
         }
       }
