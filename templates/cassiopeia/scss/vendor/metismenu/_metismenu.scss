@@ -115,6 +115,8 @@
           > ul {
             position: relative;
             top: 0;
+            margin-top: ($cassiopeia-grid-gutter/2);
+            margin-bottom: ($cassiopeia-grid-gutter/-2);
             margin-left: $cassiopeia-grid-gutter;
             flex-basis: 100%;
             background-color: hsla(0, 0%, 0%, .03);
