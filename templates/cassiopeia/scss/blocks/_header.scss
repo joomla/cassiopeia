@@ -148,6 +148,12 @@
 
   @if $metismenu==true {
     .metismenu.mod-menu {
+      .metismenu-item.level-1 {
+        + .metismenu-item {
+          margin-top: 0;
+        }
+      }
+
       .mm-collapse {
         > li {
           display: block;
