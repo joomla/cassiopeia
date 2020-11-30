@@ -24,8 +24,11 @@
     }
 
     &.mod-menu {
+      margin: 0;
+
       .metismenu-item {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         font-size: 1.1rem;
         line-height: 1.5;
@@ -117,7 +120,7 @@
           > ul {
             position: relative;
             top: 0;
-            padding: 1em;
+            flex-basis: 100%;
             background-color: hsla(0, 0%, 0%, .03);
             box-shadow: none;
           }
@@ -171,8 +174,6 @@
       }
 
       li.parent {
-        display: block;
-
         .mm-toggler {
           display: inline-flex;
           text-align: left;
@@ -185,7 +186,6 @@
         > ul {
           position: relative;
           top: 0;
-          padding: 0 1em;
           box-shadow: none;
 
           @include media-breakpoint-down(md) {
