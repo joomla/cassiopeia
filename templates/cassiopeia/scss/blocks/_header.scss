@@ -201,6 +201,10 @@
           text-decoration: none;
         }
       }
+
+      > ul {
+        min-width: 9rem;
+      }
     }
   }
 

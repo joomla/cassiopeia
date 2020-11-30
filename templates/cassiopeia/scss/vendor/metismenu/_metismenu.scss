@@ -15,6 +15,12 @@
       > li {
         position: relative;
       }
+
+      .level-1 {
+        > ul {
+          min-width: 9rem;
+        }
+      }
     }
 
     &.mod-menu {
@@ -38,7 +44,6 @@
           z-index: 1001;
           display: block;
           padding: 0;
-          min-width: 12rem;
           list-style: none;
           box-shadow: 0 0 .5em hsla(0, 0%, 0%, .1);
         }
@@ -110,6 +115,7 @@
           > ul {
             position: relative;
             top: 0;
+            margin-left: $cassiopeia-grid-gutter;
             flex-basis: 100%;
             background-color: hsla(0, 0%, 0%, .03);
             box-shadow: none;
