@@ -148,6 +148,10 @@
 
   @if $metismenu==true {
     .metismenu > li {
+      + li {
+        margin-left: 0;
+      }
+
       > a::after,
       > button::before {
 
