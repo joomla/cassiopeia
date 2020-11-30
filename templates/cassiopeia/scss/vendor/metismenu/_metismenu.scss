@@ -156,13 +156,6 @@
         &[aria-expanded="true"]:after {
           transform: rotateX(-180deg);
         }
-
-        &.mm-toggler-nolink {
-          &:after {
-            position: relative;
-            top: .125em;
-          }
-        }
       }
     }
   }
