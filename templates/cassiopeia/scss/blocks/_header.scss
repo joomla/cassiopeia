@@ -141,7 +141,7 @@
     .parent {
       > ul {
         display: none;
-        color: var(--cassiopeia-color-primary);
+        color: $gray-900;
       }
     }
   }
