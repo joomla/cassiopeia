@@ -198,6 +198,17 @@
           white-space: inherit;
         }
       }
+
+      &.mod-menu {
+        .mm-toggler {
+          &.mm-toggler-nolink {
+            &:after {
+              position: relative;
+              top: .125em;
+            }
+          }
+        }
+      }
     }
   }
 }
