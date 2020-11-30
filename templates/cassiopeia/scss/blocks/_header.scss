@@ -147,6 +147,14 @@
   }
 
   @if $metismenu==true {
+    .metismenu.mod-menu {
+      .mm-collapse {
+        > li {
+          display: block;
+        }
+      }
+    }
+
     .metismenu > li {
       > a::after,
       > button::before {
