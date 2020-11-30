@@ -23,7 +23,7 @@ $scrollLength: 100vh;
   position: fixed;
   /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
   position: sticky;
-  top: calc(#{$scrollLength} - #{$cassiopeia-grid-gutter * 3});
+  top: calc(#{$scrollLength} - #{$cassiopeia-grid-gutter * 4});
   padding: $cassiopeia-grid-gutter/2;
   color: var(--cassiopeia-color-primary, $standard-color-primary);
   pointer-events: all;
