@@ -27,10 +27,10 @@
       margin: 0;
 
       .metismenu-item {
-        padding: ($cassiopeia-grid-gutter/2) $cassiopeia-grid-gutter;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        padding: ($cassiopeia-grid-gutter/2) $cassiopeia-grid-gutter;
         font-size: 1.1rem;
         line-height: 1.5;
 
@@ -115,10 +115,10 @@
           > ul {
             position: relative;
             top: 0;
+            flex-basis: 100%;
             margin-top: ($cassiopeia-grid-gutter/2);
             margin-bottom: ($cassiopeia-grid-gutter/-2);
             margin-left: $cassiopeia-grid-gutter;
-            flex-basis: 100%;
             background-color: hsla(0, 0%, 0%, .03);
             box-shadow: none;
           }
