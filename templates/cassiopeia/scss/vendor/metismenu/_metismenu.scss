@@ -93,7 +93,7 @@
         overflow: hidden;
         transition-timing-function: ease;
         transition-duration: .35s;
-        transition-property: height, visibility;
+        transition-property: color, background-color, height, visibility;
       }
 
       .mm-collapse {
