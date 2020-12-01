@@ -90,6 +90,13 @@
           margin: .25em;
           overflow: hidden;
           border-right: 1px solid $gray-400;
+
+          @include media-breakpoint-down(sm) {
+            width: auto;
+            height: 1px;
+            border-bottom: 1px solid $gray-400;
+          }
+
         }
       }
 
