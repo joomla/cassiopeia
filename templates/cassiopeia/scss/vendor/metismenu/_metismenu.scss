@@ -49,7 +49,8 @@
         }
 
         > span,
-        > a {
+        > a,
+        > button {
           overflow: hidden;
           text-decoration: none;
           text-overflow: ellipsis;
@@ -128,11 +129,9 @@
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
         height: 100%;
         padding: 0;
         color: currentColor;
-        white-space: nowrap;
         user-select: none;
         background: none;
         border: none;
