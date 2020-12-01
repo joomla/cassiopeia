@@ -160,6 +160,12 @@
           transform: rotateX(-180deg);
         }
       }
+
+      .parent {
+        > ul {
+          color: $gray-900;
+        }
+      }
     }
   }
 
