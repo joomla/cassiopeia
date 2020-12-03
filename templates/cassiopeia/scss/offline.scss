@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
   overflow: hidden;
 }
@@ -21,9 +21,9 @@
   max-width: 30em;
   margin: 60px auto;
   background-color: $white;
-  border: 1px solid hsla(0, 0%, 0%,.1);
+  border: 1px solid hsla(0, 0%, 0%, .1);
   border-radius: 5px;
-  box-shadow: 0 0 10px hsla(0, 0%, 0%,.05);
+  box-shadow: 0 0 10px hsla(0, 0%, 0%, .05);
 }
 
 .header {
@@ -91,9 +91,9 @@ input {
   padding: 12px;
   margin-top: 2px;
   background-color: $white;
-  border: 1px solid hsla(0, 0%, 0%,.05);
+  border: 1px solid hsla(0, 0%, 0%, .05);
   border-radius: 50%;
-  box-shadow: 0 0 5px hsla(0, 0%, 0%,.075);
+  box-shadow: 0 0 5px hsla(0, 0%, 0%, .075);
   transform: translate(-50%, -50%);
 }
 

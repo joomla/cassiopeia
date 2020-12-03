@@ -3,13 +3,14 @@
  * @package     Joomla.Site
  * @subpackage  Templates.cassiopeia
  *
- * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright   (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 
@@ -38,17 +39,17 @@ $templatePath = 'templates/' . $this->template;
 $paramsColorName = $params->get('colorName', 'colors_standard');
 $assetColorName  = 'theme.' . $paramsColorName;
 $wa->registerAndUseStyle($assetColorName, $templatePath . '/css/global/' . $paramsColorName . '.css');
-$this->getPreloadManager()->preload($wa->getAsset('style', $assetColorName)->getUri(), ['as' => 'style']);
+$this->getPreloadManager()->prefetch($wa->getAsset('style', $assetColorName)->getUri(), ['as' => 'style']);
 
-// Use a font scheme if not "None" is set in the template style options
+// Use a font scheme if set in the template style options
 $paramsFontScheme = $params->get('useFontScheme', false);
 
 if ($paramsFontScheme)
 {
-	// Preload the stylesheet for the font scheme, actually we need to preload the font(s)
+	// Prefetch the stylesheet for the font scheme, actually we need to prefetch the font(s)
 	$assetFontScheme  = 'fontscheme.' . $paramsFontScheme;
 	$wa->registerAndUseStyle($assetFontScheme, $templatePath . '/css/global/' . $paramsFontScheme . '.css');
-	$this->getPreloadManager()->preload($wa->getAsset('style', $assetFontScheme)->getUri(), ['as' => 'style']);
+	$this->getPreloadManager()->prefetch($wa->getAsset('style', $assetFontScheme)->getUri(), ['as' => 'style']);
 }
 
 // Enable assets
@@ -59,6 +60,11 @@ $wa->usePreset('template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'l
 
 // Override 'template.active' asset to set correct ltr/rtl dependency
 $wa->registerStyle('template.active', '', [], [], ['template.cassiopeia.' . ($this->direction === 'rtl' ? 'rtl' : 'ltr')]);
+
+// Browsers support SVG favicons
+$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon.svg', '', [], true, 1), 'icon', 'rel', ['type' => 'image/svg+xml']);
+$this->addHeadLink(HTMLHelper::_('image', 'favicon.ico', '', [], true, 1), 'alternate icon', 'rel', ['type' => 'image/vnd.microsoft.icon']);
+$this->addHeadLink(HTMLHelper::_('image', 'joomla-favicon-pinned.svg', '', [], true, 1), 'mask-icon', 'rel', ['color' => '#000']);
 
 // Logo file or site title param
 if ($this->params->get('logoFile'))
@@ -99,7 +105,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 	<header class="header container-header full-width">
 		<div class="grid-child">
 			<div class="navbar-brand">
-				<a href="<?php echo $this->baseurl; ?>/">
+				<a class="brand-logo" href="<?php echo $this->baseurl; ?>/">
 					<?php echo $logo; ?>
 				</a>
 				<?php if ($params->get('siteDescription')) : ?>
@@ -110,15 +116,15 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 		<?php if ($this->countModules('menu') || $this->countModules('search')) : ?>
 			<div class="grid-child container-nav">
 				<?php if ($this->countModules('menu')) : ?>
-					<nav class="navbar navbar-expand-lg">
+					<nav class="navbar navbar-expand-md">
 						<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="<?php echo Text::_('TPL_CASSIOPEIA_TOGGLE'); ?>">
-							<span class="fas fa-bars" aria-hidden="true"></span>
+							<span class="icon-menu" aria-hidden="true"></span>
 						</button>
 						<div class="collapse navbar-collapse" id="navbar">
 							<jdoc:include type="modules" name="menu" style="none" />
 						</div>
 					</nav>
-					<?php endif; ?>
+				<?php endif; ?>
 				<?php if ($this->countModules('search')) : ?>
 					<div class="container-search">
 						<div class="form-inline">
@@ -144,7 +150,7 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 					<li><?php echo Text::_('JERROR_LAYOUT_YOU_HAVE_NO_ACCESS_TO_THIS_PAGE'); ?></li>
 				</ul>
 				<p><?php echo Text::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?></p>
-				<p><a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-secondary"><span class="fas fa-home" aria-hidden="true"></span> <?php echo Text::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></p>
+				<p><a href="<?php echo $this->baseurl; ?>/index.php" class="btn btn-secondary"><span class="icon-home" aria-hidden="true"></span> <?php echo Text::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></p>
 				<hr>
 				<p><?php echo Text::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?></p>
 				<blockquote>
@@ -174,16 +180,10 @@ $this->setMetaData('viewport', 'width=device-width, initial-scale=1');
 		</div>
 	</div>
 
-	<?php if ($this->countModules('footer') || ($params->get('backTop') == 1)) : ?>
+	<?php if ($this->countModules('footer')) : ?>
 	<footer class="container-footer footer full-width">
 		<div class="grid-child">
 			<jdoc:include type="modules" name="footer" style="none" />
-			<?php if ($params->get('backTop') == 1) : ?>
-				<a href="#top" id="back-top" class="back-top">
-					<span class="fas fa-arrow-up" aria-hidden="true"></span>
-					<span class="sr-only"><?php echo Text::_('TPL_CASSIOPEIA_BACKTOTOP'); ?></span>
-				</a>
-			<?php endif; ?>
 		</div>
 	</footer>
 	<?php endif; ?>

@@ -18,11 +18,6 @@ body,
   right: -1px;
 }
 
-dd {
-  margin-right: 0;
-  margin-left: auto;
-}
-
 .form-check {
   padding-right: 1.25rem;
   padding-left: 0;
@@ -41,8 +36,10 @@ dd {
 }
 
 .metismenu.mod-menu .mm-toggler {
-  margin-right: .5em;
-  margin-left: 0;
+  &:after {
+    margin-right: .5em;
+    margin-left: 0;
+  }
 }
 
 .container-header {

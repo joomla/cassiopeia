@@ -2,7 +2,7 @@
 /**
  * Joomla! Content Management System
  *
- * @copyright  Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
+ * @copyright  (C) 2007 Open Source Matters, Inc. <https://www.joomla.org>
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -279,8 +279,8 @@ abstract class CMSPlugin implements DispatcherAwareInterface, PluginInterface
 					unset($arguments['result']);
 				}
 
-				// Map the associative argument array to a numeric indexed array for efficiency (see the switch statement below).
-				$arguments = array_values($arguments);
+				// Convert to indexed array for unpacking.
+				$arguments = \array_values($arguments);
 
 				$result = $this->{$methodName}(...$arguments);
 
@@ -319,7 +319,7 @@ abstract class CMSPlugin implements DispatcherAwareInterface, PluginInterface
 	 *
 	 * @return  boolean
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   4.0.0
 	 */
 	private function parameterImplementsEventInterface(\ReflectionParameter $parameter): bool
 	{
